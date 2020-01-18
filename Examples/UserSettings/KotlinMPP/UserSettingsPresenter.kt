@@ -1,0 +1,3 @@
+interface UserSettingsPresenter {
+    fun onValidate()
+}
