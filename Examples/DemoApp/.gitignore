@@ -29,3 +29,7 @@ build/
 # Keys
 *.jks
 google-services.json
+
+# iOS Frameworks
+iosApp/Frameworks
+
