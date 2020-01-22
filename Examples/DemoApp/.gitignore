@@ -1,0 +1,31 @@
+# built application files
+*.apk
+*.aab
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+
+# generated files
+bin/
+gen/
+
+# Local configuration file
+local.properties
+
+# Intellij project files
+*.iml
+*.ipr
+*.iws
+.idea/
+*.prefs
+
+# Gradle
+build/
+.gradle
+
+# Keys
+*.jks
+google-services.json
