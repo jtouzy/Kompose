@@ -13,7 +13,23 @@
 		53B6BF8423D848B700A717C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53B6BF8323D848B700A717C0 /* Assets.xcassets */; };
 		53B6BF8723D848B700A717C0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53B6BF8623D848B700A717C0 /* Preview Assets.xcassets */; };
 		53B6BF8A23D848B700A717C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53B6BF8823D848B700A717C0 /* LaunchScreen.storyboard */; };
+		53B6BFB223D854E500A717C0 /* shared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53B6BFB023D854DB00A717C0 /* shared.framework */; };
+		53B6BFB323D854E500A717C0 /* shared.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 53B6BFB023D854DB00A717C0 /* shared.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		53B6BFB423D854E500A717C0 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				53B6BFB323D854E500A717C0 /* shared.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		53B6BF7A23D848B400A717C0 /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -24,6 +40,8 @@
 		53B6BF8623D848B700A717C0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		53B6BF8923D848B700A717C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		53B6BF8B23D848B700A717C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		53B6BFAE23D84CEC00A717C0 /* buildKotlinFrameworks.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = buildKotlinFrameworks.sh; sourceTree = "<group>"; };
+		53B6BFB023D854DB00A717C0 /* shared.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = shared.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53B6BFB223D854E500A717C0 /* shared.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,7 +59,9 @@
 		53B6BF7123D848B400A717C0 = {
 			isa = PBXGroup;
 			children = (
+				53B6BFAE23D84CEC00A717C0 /* buildKotlinFrameworks.sh */,
 				53B6BF7C23D848B400A717C0 /* DemoApp */,
+				53B6BFAF23D84D4F00A717C0 /* Frameworks */,
 				53B6BF7B23D848B400A717C0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -75,6 +96,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		53B6BFAF23D84D4F00A717C0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				53B6BFB023D854DB00A717C0 /* shared.framework */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -82,9 +111,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 53B6BFA423D848B700A717C0 /* Build configuration list for PBXNativeTarget "DemoApp" */;
 			buildPhases = (
+				53B6BFAD23D84A6C00A717C0 /* Generate frameworks from Kotlin MPP */,
 				53B6BF7623D848B400A717C0 /* Sources */,
 				53B6BF7723D848B400A717C0 /* Frameworks */,
 				53B6BF7823D848B400A717C0 /* Resources */,
+				53B6BFB423D854E500A717C0 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -140,6 +171,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		53B6BFAD23D84A6C00A717C0 /* Generate frameworks from Kotlin MPP */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Generate frameworks from Kotlin MPP";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./buildKotlinFrameworks.sh\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		53B6BF7623D848B400A717C0 /* Sources */ = {
@@ -288,6 +340,10 @@
 				DEVELOPMENT_ASSET_PATHS = "\"DemoApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 23A3PS5QB5;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = DemoApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -308,6 +364,10 @@
 				DEVELOPMENT_ASSET_PATHS = "\"DemoApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 23A3PS5QB5;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = DemoApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
