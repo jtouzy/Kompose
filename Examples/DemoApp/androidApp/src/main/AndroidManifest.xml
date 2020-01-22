@@ -17,7 +17,7 @@
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.jtouzy.entract.app"
+    package="com.jtouzy.demo.app"
     >
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -31,5 +31,5 @@
         android:theme="@style/Theme.Demo"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
-        ></application>
+        />
 </manifest>
