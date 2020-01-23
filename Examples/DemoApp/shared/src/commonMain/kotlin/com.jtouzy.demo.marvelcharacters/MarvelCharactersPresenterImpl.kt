@@ -5,10 +5,10 @@ import com.jtouzy.demo.ui.Store
 class MarvelCharactersPresenterImpl(
     private val store: Store<MarvelCharactersViewState>
 ): MarvelCharactersPresenter {
-    /**
-     * Called when first view loading is ended.
-     */
-    override fun onViewLoadingEnded() {
-        TODO("not implemented")
+
+    override fun loadCharaters() {
+        dispatcher.update(
+            Content(listOf("Hulk", "Iron Man", "Thor"))
+        )
     }
 }
