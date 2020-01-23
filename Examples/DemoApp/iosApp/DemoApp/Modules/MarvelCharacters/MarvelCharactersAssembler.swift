@@ -10,8 +10,8 @@ import shared
 
 class MarvelCharactersAssembler {
     static func assemble() -> MarvelCharactersView {
-        let dispatcher = DispatcherImpl<MarvelCharactersViewState>(baseState: .loading)
-        let presenter = MarvelCharactersPresenterImpl(dispatcher: dispatcher)
-        return MarvelCharactersView(presenter: presenter, observed: dispatcher.observed)
+        let store = ObservableStore<MarvelCharactersViewState>(baseState: .loading)
+        let presenter = MarvelCharactersPresenterImpl(store: store)
+        return MarvelCharactersView(presenter: presenter, store: store)
     }
 }

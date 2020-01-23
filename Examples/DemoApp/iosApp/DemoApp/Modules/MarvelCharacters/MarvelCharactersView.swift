@@ -11,8 +11,8 @@ import shared
 
 struct MarvelCharactersView: View {
     let presenter: MarvelCharactersPresenter
-    @ObservedObject var observed: Observed<MarvelCharactersViewState>
-    var viewState: MarvelCharactersViewState { observed.viewState }
+    @ObservedObject var store: ObservableStore<MarvelCharactersViewState>
+    var viewState: MarvelCharactersViewState { store.state }
 
     var body: some View {
         VStack {

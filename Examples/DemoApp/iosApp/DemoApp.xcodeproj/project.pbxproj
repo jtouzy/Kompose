@@ -14,8 +14,7 @@
 		53B6BFB223D854E500A717C0 /* shared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53B6BFB023D854DB00A717C0 /* shared.framework */; };
 		53B6BFB323D854E500A717C0 /* shared.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 53B6BFB023D854DB00A717C0 /* shared.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		53B6BFB623D8834100A717C0 /* MarvelCharactersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B6BFB523D8834100A717C0 /* MarvelCharactersView.swift */; };
-		53B6BFBB23D883CB00A717C0 /* DispatcherImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B6BFBA23D883CB00A717C0 /* DispatcherImpl.swift */; };
-		53B6BFBD23D8840600A717C0 /* Observed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B6BFBC23D8840600A717C0 /* Observed.swift */; };
+		53B6BFBB23D883CB00A717C0 /* ObservableStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B6BFBA23D883CB00A717C0 /* ObservableStore.swift */; };
 		53B6BFBF23D8845E00A717C0 /* MarvelCharactersAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B6BFBE23D8845E00A717C0 /* MarvelCharactersAssembler.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,8 +42,7 @@
 		53B6BFAE23D84CEC00A717C0 /* buildKotlinFrameworks.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = buildKotlinFrameworks.sh; sourceTree = "<group>"; };
 		53B6BFB023D854DB00A717C0 /* shared.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = shared.framework; sourceTree = "<group>"; };
 		53B6BFB523D8834100A717C0 /* MarvelCharactersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelCharactersView.swift; sourceTree = "<group>"; };
-		53B6BFBA23D883CB00A717C0 /* DispatcherImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatcherImpl.swift; sourceTree = "<group>"; };
-		53B6BFBC23D8840600A717C0 /* Observed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observed.swift; sourceTree = "<group>"; };
+		53B6BFBA23D883CB00A717C0 /* ObservableStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableStore.swift; sourceTree = "<group>"; };
 		53B6BFBE23D8845E00A717C0 /* MarvelCharactersAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelCharactersAssembler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,8 +110,7 @@
 		53B6BFB823D883A500A717C0 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				53B6BFBA23D883CB00A717C0 /* DispatcherImpl.swift */,
-				53B6BFBC23D8840600A717C0 /* Observed.swift */,
+				53B6BFBA23D883CB00A717C0 /* ObservableStore.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -221,10 +218,9 @@
 			files = (
 				53B6BFBF23D8845E00A717C0 /* MarvelCharactersAssembler.swift in Sources */,
 				53B6BF7E23D848B400A717C0 /* AppDelegate.swift in Sources */,
-				53B6BFBD23D8840600A717C0 /* Observed.swift in Sources */,
 				53B6BF8023D848B400A717C0 /* SceneDelegate.swift in Sources */,
 				53B6BFB623D8834100A717C0 /* MarvelCharactersView.swift in Sources */,
-				53B6BFBB23D883CB00A717C0 /* DispatcherImpl.swift in Sources */,
+				53B6BFBB23D883CB00A717C0 /* ObservableStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
