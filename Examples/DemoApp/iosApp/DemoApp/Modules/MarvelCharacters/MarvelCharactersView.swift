@@ -17,13 +17,17 @@ extension String: Identifiable {
 
 struct MarvelCharactersView: View {
     let presenter: MarvelCharactersPresenter
-    @ObservedObject var observed: Observed<MarvelCharactersViewState>
-    var viewState: MarvelCharactersViewState { observed.viewState }
+    @ObservedObject var store: ObservableStore<MarvelCharactersViewState>
+    var viewState: MarvelCharactersViewState { store.state }
 
     var body: some View {
         VStack {
             containedView()
-        }.onAppear { self.presenter.loadCharaters() }
+        }.onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+                self.presenter.loadCharaters()
+            })
+        }
     }
 
     func containedView() -> AnyView {

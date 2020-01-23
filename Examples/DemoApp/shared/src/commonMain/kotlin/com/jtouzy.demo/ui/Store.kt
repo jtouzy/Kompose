@@ -1,5 +1,5 @@
 package com.jtouzy.demo.ui
 
-interface Dispatcher<T : ViewState> {
+interface Store<T : ViewState> {
     fun update(viewState: T)
 }
