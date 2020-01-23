@@ -7,7 +7,7 @@ class MarvelCharactersPresenterImpl(
 ): MarvelCharactersPresenter {
 
     override fun loadCharaters() {
-        dispatcher.update(
+        store.update(
             Content(listOf("Hulk", "Iron Man", "Thor"))
         )
     }

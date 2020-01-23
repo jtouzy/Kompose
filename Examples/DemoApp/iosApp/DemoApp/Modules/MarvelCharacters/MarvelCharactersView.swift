@@ -23,7 +23,11 @@ struct MarvelCharactersView: View {
     var body: some View {
         VStack {
             containedView()
-        }.onAppear { self.presenter.loadCharaters() }
+        }.onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+                self.presenter.loadCharaters()
+            })
+        }
     }
 
     func containedView() -> AnyView {
