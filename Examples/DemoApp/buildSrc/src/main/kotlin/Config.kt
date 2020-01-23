@@ -18,12 +18,10 @@ object Build {
 
     object Versions {
         const val kotlin = "1.3.61"
-        const val androidGradle = "3.6.0-rc01"
-        const val googleServices = "4.3.3"
+        const val androidGradle = "4.0.0-alpha09"
     }
 
     const val androidGradle = "com.android.tools.build:gradle:${Versions.androidGradle}"
-    const val googleServices = "com.google.gms:google-services:${Versions.googleServices}"
 }
 
 object Android {
@@ -73,6 +71,7 @@ object AndroidX {
         const val coreKtx = "1.1.0"
         const val fragmentKtx = "1.1.0"
         const val navigation = "2.1.0"
+        const val compose = "0.1.0-dev03"
     }
 
     const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
@@ -83,6 +82,12 @@ object AndroidX {
     const val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.fragmentKtx}"
     const val navFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
     const val navUi = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
+
+    const val composeFoundation = "androidx.ui:ui-foundation:${Versions.compose}"
+    const val composeFramework = "androidx.ui:ui-framework:${Versions.compose}"
+    const val composeLayout = "androidx.ui:ui-layout:${Versions.compose}"
+    const val composeMaterial = "androidx.ui:ui-material:${Versions.compose}"
+    const val composeTooling = "androidx.ui:ui-tooling:${Versions.compose}"
 }
 
 

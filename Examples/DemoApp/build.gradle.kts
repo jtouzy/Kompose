@@ -32,7 +32,6 @@ buildscript {
         classpath(kotlin("gradle-plugin", Build.Versions.kotlin))
         classpath(kotlin("serialization", Build.Versions.kotlin))
         classpath(Build.androidGradle)
-        classpath(Build.googleServices)
     }
 }
 
@@ -64,19 +63,19 @@ subprojects {
 
 // ./gradlew dependencyUpdates -Drevision=release
 tasks.named<DependencyUpdatesTask>("dependencyUpdates") {
-    resolutionStrategy {
-        componentSelection {
-            all {
-                val rejected =
-                    listOf("alpha", "beta", "rc", "cr", "m", "preview", "test", "b", "ea", "eap").any { qualifier ->
-                        candidate.version.matches(Regex("(?i).*[.-]$qualifier[.\\d-+]*"))
-                    }
-                if (rejected) {
-                    reject("Only final versions")
-                }
-            }
-        }
-    }
+//    resolutionStrategy {
+//        componentSelection {
+//            all {
+//                val rejected =
+//                    listOf("alpha", "beta", "rc", "cr", "m", "preview", "test", "b", "ea", "eap").any { qualifier ->
+//                        candidate.version.matches(Regex("(?i).*[.-]$qualifier[.\\d-+]*"))
+//                    }
+//                if (rejected) {
+//                    reject("Only final versions")
+//                }
+//            }
+//        }
+//    }
     checkForGradleUpdate = true
     outputFormatter = "json"
     outputDir = "build/dependencyUpdates"
