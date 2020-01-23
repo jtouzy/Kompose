@@ -10,7 +10,7 @@ import shared
 
 class MarvelCharactersAssembler {
     static func assemble() -> MarvelCharactersView {
-        let dispatcher = DispatcherImpl<MarvelCharactersViewState>(baseState: .loading)
+        let dispatcher = DispatcherImpl<MarvelCharactersViewState>(baseState: Loading())
         let presenter = MarvelCharactersPresenterImpl(dispatcher: dispatcher)
         return MarvelCharactersView(presenter: presenter, observed: dispatcher.observed)
     }
