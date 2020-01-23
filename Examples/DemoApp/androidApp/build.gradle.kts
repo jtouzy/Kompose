@@ -19,9 +19,9 @@ plugins {
     kotlin("android")
 }
 
-val versionMajor = 1
-val versionMinor = 7
-val versionPatch = 0
+val versionMajor = 0
+val versionMinor = 0
+val versionPatch = 1
 
 android {
     compileSdkVersion(Android.compileSdkVersion)
@@ -75,6 +75,9 @@ android {
         exclude("**/*.xml")
         exclude("**/*.properties")
     }
+    buildFeatures {
+        compose = true
+    }
 }
 
 dependencies {
@@ -90,11 +93,14 @@ dependencies {
     implementation(AndroidX.navFragment)
     implementation(AndroidX.navUi)
     implementation(Google.material)
-    implementation(Google.firebaseCore)
-    implementation(Google.firebaseMessaging)
     implementation(Libs.koinAndroid)
     implementation(Libs.coil)
     implementation(Libs.jsr310)
     implementation(Libs.timber)
     implementation(Libs.uniflow)
+    implementation(AndroidX.composeFoundation)
+    implementation(AndroidX.composeFramework)
+    implementation(AndroidX.composeLayout)
+    implementation(AndroidX.composeMaterial)
+    implementation(AndroidX.composeTooling)
 }
