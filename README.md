@@ -11,8 +11,12 @@ This repository describes an architecture pattern for mobile applications. Main 
 * And so, avoid duplicate work between Android devs and iOS devs for common code and common unit tests
 * Use native languages & frameworks for drawing views (SwiftUI/Storyboards for iOS, Compose/XML for Android) for maximum design capabilities
 
-## Architecture overview
+## Example app
+
+### First page - MarvelCharacters
+
+#### Overview
 
 <p align="center">
-  <img src="./Resources/Overview.png" alt="overview" width="700"/>
+  <img src="./Resources/ExampleOverview.png" alt="overview" width="700"/>
 </p>
