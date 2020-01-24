@@ -14,24 +14,26 @@ import androidx.ui.material.ColorPalette
 import androidx.ui.material.MaterialTheme
 import androidx.ui.material.TopAppBar
 import androidx.ui.tooling.preview.Preview
-import com.jtouzy.demo.marvelcharacters.MarvelCharactersPresenter
+import com.jtouzy.demo.app.model.ObservableCharacters
+import com.jtouzy.demo.ui.characters.MarvelCharactersPresenter
 import org.koin.android.ext.android.inject
 
-class DemoActivity : AppCompatActivity() {
+class MarvelCharactersActivity : AppCompatActivity() {
 
     private val presenter by inject<MarvelCharactersPresenter>()
+    private val characters by inject<ObservableCharacters>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent { getContent() }
-        presenter.loadCharaters()
+        presenter.loadCharacters()
     }
 
     @Composable
     fun displayCharacters() {
         VerticalScroller {
             Column {
-                DemoStatus.characters.forEach {
+                characters.names.forEach {
                     Padding(16.dp) { Text(text = it) }
                 }
             }

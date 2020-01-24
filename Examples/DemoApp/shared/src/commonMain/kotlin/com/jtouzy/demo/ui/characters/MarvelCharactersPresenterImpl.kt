@@ -1,12 +1,12 @@
-package com.jtouzy.demo.marvelcharacters
+package com.jtouzy.demo.ui.characters
 
 import com.jtouzy.demo.ui.Store
 
 class MarvelCharactersPresenterImpl(
     private val store: Store<MarvelCharactersViewState>
-): MarvelCharactersPresenter {
+) : MarvelCharactersPresenter {
 
-    override fun loadCharaters() {
+    override fun loadCharacters() {
         store.update(
             Content(listOf("Hulk", "Iron Man", "Thor"))
         )

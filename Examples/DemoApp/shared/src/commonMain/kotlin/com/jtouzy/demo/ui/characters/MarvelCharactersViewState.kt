@@ -1,4 +1,4 @@
-package com.jtouzy.demo.marvelcharacters
+package com.jtouzy.demo.ui.characters
 
 import com.jtouzy.demo.ui.ViewState
 
