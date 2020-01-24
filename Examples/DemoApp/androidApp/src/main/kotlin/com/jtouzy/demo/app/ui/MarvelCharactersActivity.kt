@@ -14,30 +14,21 @@ import androidx.ui.material.ColorPalette
 import androidx.ui.material.MaterialTheme
 import androidx.ui.material.TopAppBar
 import androidx.ui.tooling.preview.Preview
-import com.jtouzy.demo.app.model.ObservableCharacters
+import com.jtouzy.demo.ui.characters.Content
+import com.jtouzy.demo.ui.characters.Loading
 import com.jtouzy.demo.ui.characters.MarvelCharactersPresenter
+import com.jtouzy.demo.ui.characters.MarvelCharactersViewState
 import org.koin.android.ext.android.inject
 
 class MarvelCharactersActivity : AppCompatActivity() {
 
     private val presenter by inject<MarvelCharactersPresenter>()
-    private val characters by inject<ObservableCharacters>()
+    private val store by inject<ObservableStore<MarvelCharactersViewState>>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent { getContent() }
         presenter.loadCharacters()
-    }
-
-    @Composable
-    fun displayCharacters() {
-        VerticalScroller {
-            Column {
-                characters.names.forEach {
-                    Padding(16.dp) { Text(text = it) }
-                }
-            }
-        }
     }
 
     @Preview
@@ -50,7 +41,26 @@ class MarvelCharactersActivity : AppCompatActivity() {
         ) {
             Column {
                 TopAppBar(title = { Text("Demo") })
-                displayCharacters()
+                when(store.state) {
+                    Loading -> getLoadingView()
+                    is Content -> getContentView(store.state as Content)
+                }
+            }
+        }
+    }
+
+    @Composable
+    fun getLoadingView() {
+        Text(text = "Loading")
+    }
+
+    @Composable
+    fun getContentView(state: Content) {
+        VerticalScroller {
+            Column {
+                state.characters.forEach {
+                    Padding(16.dp) { Text(text = it) }
+                }
             }
         }
     }
