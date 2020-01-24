@@ -1,6 +1,10 @@
 # SwiftUI + Kotlin MPP
 
-Reusable architecture pattern for multiplatform mobile projects with Kotlin Multiplatform & SwiftUI.
+Reusable architecture pattern for multiplatform mobile projects with Kotlin Multiplatform, SwiftUI & Compose.
+
+<p align="center">
+  <img src="./Resources/Logo.png" alt="overview" width="150"/>
+</p>
 
 ## Purpose
 
