@@ -1,9 +1,8 @@
 package com.jtouzy.demo.network
 
 import com.jtouzy.demo.BuildKonfig
-import com.jtouzy.demo.network.dto.CharacterMarvelDto
 import com.jtouzy.demo.network.dto.DataWrapper
-import com.jtouzy.demo.utils.getTimeStamp
+import com.soywiz.klock.DateTime
 import com.soywiz.krypto.md5
 import io.ktor.client.HttpClient
 import io.ktor.client.features.json.JsonFeature
@@ -14,13 +13,17 @@ import io.ktor.client.request.parameter
 import io.ktor.http.headersOf
 import kotlinx.io.core.toByteArray
 import kotlinx.serialization.json.Json
-import kotlinx.serialization.list
 
 class MarvelApi {
 
+    private val timestamp: String
+        get() {
+            return (DateTime.now().unixMillisLong / 1000L).toString()
+        }
+
     private val client = HttpClient {
         install(JsonFeature) {
-            serializer = KotlinxSerializer()
+            serializer = KotlinxSerializer(Json.nonstrict)
         }
         headersOf("Accept", "application/json")
         headersOf("Accept-Language", "en")
@@ -35,18 +38,21 @@ class MarvelApi {
             addCredentialsParameters()
         }
     }.run {
-        val dataWrapper = Json.parse(DataWrapper.serializer(typeSerial0 = CharacterMarvelDto.serializer().list), this)
+        val dataWrapper = Json.parse(DataWrapper.serializer(), this)
         dataWrapper.data?.results?.map { MarvelCharacter(it) } ?: error("No data")
     }
 
     private fun HttpRequestBuilder.addCredentialsParameters() {
-        val timeStamp = getTimeStamp()
-        val md5 =
-            (timeStamp.toString() + BuildKonfig.PRIVATE_KEY + BuildKonfig.PUBLIC_KEY).toByteArray().md5().toString()
+        val timeStamp = timestamp
         parameter("apikey", BuildKonfig.PUBLIC_KEY)
-        parameter("hash", "0" * (32 - md5.length) + md5)
-        parameter("ts", "$timeStamp")
+        parameter("hash", generateHash(timeStamp))
+        parameter("ts", timeStamp)
     }
+
+    @UseExperimental(ExperimentalUnsignedTypes::class)
+    private fun generateHash(timestamp: String): String =
+        (timestamp + BuildKonfig.PRIVATE_KEY + BuildKonfig.PUBLIC_KEY).toByteArray().md5().asUByteArray()
+            .joinToString("") { it.toString(16).padStart(2, '0') }
 
     companion object {
         private const val BASE_URL = "gateway.marvel.com/v1/public"

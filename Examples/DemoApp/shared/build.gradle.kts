@@ -53,6 +53,7 @@ kotlin {
             implementation(Ktor.clientJson)
             implementation(Ktor.clientSerialization)
             implementation("com.soywiz.korlibs.krypto:krypto:1.9.1")
+            implementation("com.soywiz.korlibs.klock:klock:1.8.6")
         }
 
         getByName("androidMain").dependencies {
