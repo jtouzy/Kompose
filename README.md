@@ -1,4 +1,4 @@
-# SwiftUI + Kotlin MPP
+# Kompose
 
 Reusable architecture pattern for multiplatform mobile projects with Kotlin Multiplatform, SwiftUI & Compose.
 
