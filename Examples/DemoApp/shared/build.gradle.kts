@@ -1,9 +1,11 @@
+import com.codingfeline.buildkonfig.compiler.FieldSpec.Type
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
     id("org.jetbrains.kotlin.plugin.serialization")
+    id("com.codingfeline.buildkonfig")
 }
 
 android {
@@ -50,6 +52,7 @@ kotlin {
             implementation(Ktor.clientCore)
             implementation(Ktor.clientJson)
             implementation(Ktor.clientSerialization)
+            implementation("com.soywiz.korlibs.krypto:krypto:1.9.1")
         }
 
         getByName("androidMain").dependencies {
@@ -71,6 +74,15 @@ kotlin {
             implementation(Ktor.clientJsonNative)
             implementation(Ktor.clientSerializationIos)
         }
+    }
+}
+
+buildkonfig {
+    packageName = "com.jtouzy.demo"
+
+    defaultConfigs {
+        buildConfigField(Type.STRING, "PUBLIC_KEY", project.properties["marvelPublicKey"] as String)
+        buildConfigField(Type.STRING, "PRIVATE_KEY", project.properties["marvelPrivateKey"] as String)
     }
 }
 
