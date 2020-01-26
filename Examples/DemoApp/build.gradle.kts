@@ -32,7 +32,6 @@ buildscript {
         classpath(kotlin("gradle-plugin", Build.Versions.kotlin))
         classpath(kotlin("serialization", Build.Versions.kotlin))
         classpath(Build.androidGradle)
-        classpath("com.codingfeline.buildkonfig:buildkonfig-gradle-plugin:0.5.0")
     }
 }
 

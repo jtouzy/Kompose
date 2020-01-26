@@ -15,27 +15,27 @@ import androidx.ui.material.TopAppBar
 import androidx.ui.material.surface.Surface
 import com.jtouzy.demo.app.ui.home.HomeScreen
 import com.jtouzy.demo.app.ui.home.LoadingScreen
-import com.jtouzy.demo.ui.characters.MarvelCharactersPresenter
+import com.jtouzy.demo.ui.facts.CatFactsPresenter
 import org.koin.android.ext.android.inject
 
-class MarvelCharactersActivity : AppCompatActivity() {
+class CatFactsActivity : AppCompatActivity() {
 
-    private val presenter by inject<MarvelCharactersPresenter>()
+    private val presenter by inject<CatFactsPresenter>()
     private val screenProvider by inject<ScreenProvider>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent { MarvelApp() }
-        presenter.loadCharacters()
+        setContent { CatApp() }
+        presenter.loadCatFacts()
     }
 
     @Composable
-    fun MarvelApp() {
+    fun CatApp() {
         MaterialTheme(
             colors = ColorPalette(primary = Color(0xFF, 0x00, 0x00))
         ) {
             Column {
-                TopAppBar(title = { Text("Marvel Characters") })
+                TopAppBar(title = { Text("Cat Facts") })
                 AppContent()
             }
         }
@@ -47,7 +47,7 @@ class MarvelCharactersActivity : AppCompatActivity() {
             Surface(color = (+MaterialTheme.colors()).background) {
                 when (screen) {
                     Screen.Loading -> LoadingScreen()
-                    is Screen.Home -> HomeScreen(screen.characters)
+                    is Screen.Home -> HomeScreen(screen.facts)
                     is Screen.Details -> TODO()
                 }
             }

@@ -5,13 +5,13 @@ import com.jtouzy.demo.app.di.appModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
-class MarvelCharactersApp : Application() {
+class CatFactsApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
 
         startKoin {
-            androidContext(this@MarvelCharactersApp)
+            androidContext(this@CatFactsApp)
             modules(appModule)
         }
     }
