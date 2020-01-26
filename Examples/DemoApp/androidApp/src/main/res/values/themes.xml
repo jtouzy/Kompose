@@ -14,26 +14,12 @@
   ~ limitations under the License.
   -->
 
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
     <style name="Theme.Demo" parent="Base.Theme" />
 
     <style name="Base.Theme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/primary</item>
-        <item name="colorPrimaryDark">@color/primary</item>
-        <item name="colorPrimaryVariant">@color/primary_variant</item>
-        <item name="colorSecondary">@color/secondary</item>
-        <item name="colorSecondaryVariant">@color/secondary</item>
-        <item name="colorSurface">@color/surface</item>
-
-        <item name="colorOnPrimary">@color/on_primary</item>
-        <item name="colorOnSecondary">@color/on_secondary</item>
-        <item name="colorOnBackground">@color/on_background</item>
-        <item name="colorOnSurface">@color/on_surface</item>
-
-        <item name="android:statusBarColor">?colorPrimaryVariant</item>
-        <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
-        <item name="android:navigationBarColor">@color/navigation_bar</item>
-        <item name="android:windowLightNavigationBar" tools:ignore="NewApi">true</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
     </style>
 </resources>

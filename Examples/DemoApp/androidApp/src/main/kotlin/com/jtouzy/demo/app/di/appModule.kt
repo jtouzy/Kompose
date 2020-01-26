@@ -1,7 +1,6 @@
 package com.jtouzy.demo.app.di
 
 import com.jtouzy.demo.app.ui.CatFactsStore
-import com.jtouzy.demo.app.ui.ScreenProvider
 import com.jtouzy.demo.network.CatApi
 import com.jtouzy.demo.ui.Store
 import com.jtouzy.demo.ui.facts.CatFactsPresenter
@@ -11,8 +10,7 @@ import org.koin.dsl.module
 
 val appModule = module {
 
-    single { ScreenProvider() }
     single { CatApi() }
-    single<Store<CatFactsViewState>> { CatFactsStore(get()) }
+    single<Store<CatFactsViewState>> { CatFactsStore() }
     factory<CatFactsPresenter> { CatFactsPresenterImpl(get(), get()) }
 }

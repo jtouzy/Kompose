@@ -5,12 +5,12 @@ import com.jtouzy.demo.ui.facts.CatFactsViewState
 import com.jtouzy.demo.ui.facts.Content
 import com.jtouzy.demo.ui.facts.Loading
 
-class CatFactsStore(private val screenProvider: ScreenProvider) : Store<CatFactsViewState> {
+class CatFactsStore : Store<CatFactsViewState> {
 
     override fun update(viewState: CatFactsViewState) {
-        screenProvider.screen = when (viewState) {
-            Loading -> Screen.Loading
-            is Content -> Screen.Home(viewState.facts)
+        when (viewState) {
+            Loading -> ScreenProvider.navigateTo(Screen.Loading)
+            is Content -> ScreenProvider.navigateTo(Screen.Home(viewState.facts), true)
         }
     }
 }

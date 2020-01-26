@@ -4,10 +4,26 @@ import androidx.compose.Model
 import com.jtouzy.demo.ui.model.CatFact
 
 @Model
-data class ScreenProvider(var screen: Screen = Screen.Loading) {
+object ScreenProvider {
 
-    fun goToDetails(fact: CatFact) {
-        screen = Screen.Details(fact)
+    var currentScreen: Screen = Screen.Loading
+        private set
+    private val screenStack: MutableList<Screen> = mutableListOf()
+
+    fun navigateTo(destination: Screen, addToStack: Boolean = false) {
+        if (addToStack) screenStack.add(destination)
+        currentScreen = destination
+    }
+
+    fun popBackStack() {
+        if (screenStack.isEmpty()) return
+        currentScreen = if (screenStack.size > 1 && screenStack.last() == currentScreen) {
+            val index = screenStack.lastIndex
+            screenStack.removeAt(index)
+            screenStack[index - 1]
+        } else {
+            screenStack[screenStack.lastIndex]
+        }
     }
 }
 
