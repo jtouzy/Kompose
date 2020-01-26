@@ -39,7 +39,7 @@ class MarvelApi {
         }
     }.run {
         val dataWrapper = Json.parse(DataWrapper.serializer(), this)
-        dataWrapper.data?.results?.map { MarvelCharacter(it) } ?: error("No data")
+        dataWrapper.data.results.map { MarvelCharacter(it) }
     }
 
     private fun HttpRequestBuilder.addCredentialsParameters() {
@@ -58,5 +58,3 @@ class MarvelApi {
         private const val BASE_URL = "gateway.marvel.com/v1/public"
     }
 }
-
-private operator fun String.times(i: Int) = (1..i).fold("") { acc, _ -> acc + this }
