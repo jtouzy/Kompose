@@ -13,6 +13,7 @@ import androidx.ui.material.ColorPalette
 import androidx.ui.material.MaterialTheme
 import androidx.ui.material.TopAppBar
 import androidx.ui.material.surface.Surface
+import com.jtouzy.demo.app.ui.details.DetailsScreen
 import com.jtouzy.demo.app.ui.home.HomeScreen
 import com.jtouzy.demo.app.ui.home.LoadingScreen
 import com.jtouzy.demo.ui.facts.CatFactsPresenter
@@ -47,8 +48,8 @@ class CatFactsActivity : AppCompatActivity() {
             Surface(color = (+MaterialTheme.colors()).background) {
                 when (screen) {
                     Screen.Loading -> LoadingScreen()
-                    is Screen.Home -> HomeScreen(screen.facts)
-                    is Screen.Details -> TODO()
+                    is Screen.Home -> HomeScreen(screenProvider, screen.facts)
+                    is Screen.Details -> DetailsScreen(screen.fact)
                 }
             }
         }
