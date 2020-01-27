@@ -1,5 +1,5 @@
 //
-//  MarvelCharactersView.swift
+//  CharactersView.swift
 //  DemoApp
 //
 //  Created by Jérémy TOUZY on 22/01/2020.
@@ -12,31 +12,31 @@ import shared
 //
 // MARK: View Layout
 //
-struct MarvelCharactersView: View {
-    let presenter: MarvelCharactersPresenter
-    @ObservedObject var store: ObservableStore<MarvelCharactersViewState>
-    var viewState: MarvelCharactersViewState { store.state }
+struct CharactersView: View {
+    let presenter: CharactersPresenter
+    @ObservedObject var store: ObservableStore<CharactersViewState>
+    var viewState: CharactersViewState { store.state }
 
     var body: some View {
         NavigationView {
             VStack {
                 dynamicContainedView()
             }
-            .navigationBarTitle("Marvel Characters")
+            .navigationBarTitle("Breaking Bad Quotes")
         }
         .onAppear { self.onViewAppear() }
     }
 
     func dynamicContainedView() -> AnyView {
         if viewState is Loading {
-            return AnyView(Text("Loading"))
+            return AnyView(ActivityIndicator(style: .large))
         } else if let contentViewState = viewState as? Content {
             return AnyView(
                 List(contentViewState.characters) { character in
-                    NavigationLink(destination: CharacterProfileAssembler.assemble()) {
+                    NavigationLink(destination: CharacterQuotesAssembler.assemble()) {
                         HStack {
                             Image(systemName: "heart.fill")
-                            Text(character)
+                            Text(character.name)
                         }
                         .padding()
                     }
@@ -51,10 +51,8 @@ struct MarvelCharactersView: View {
 //
 // MARK: Events
 //
-extension MarvelCharactersView {
+extension CharactersView {
     func onViewAppear() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-            self.presenter.loadCharaters()
-        })
+        presenter.loadCharacters()
     }
 }
