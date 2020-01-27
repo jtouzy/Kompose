@@ -113,13 +113,18 @@ object Ktor {
 
     private const val version = "1.2.6"
 
+    // Common
     const val clientCore = "io.ktor:ktor-client-core:$version"
     const val clientJson = "io.ktor:ktor-client-json:$version"
     const val clientSerialization = "io.ktor:ktor-client-serialization:$version"
-    const val clientOkttp = "io.ktor:ktor-client-okhttp:$version"
+    const val clientLogging = "io.ktor:ktor-client-logging:$version"
+    // Android
     const val clientJsonJvm = "io.ktor:ktor-client-json-jvm:$version"
     const val clientSerializationJvm = "io.ktor:ktor-client-serialization-jvm:$version"
+    const val clientLoggingJvm = "io.ktor:ktor-client-logging-jvm:$version"
+    // IOS
     const val clientIos = "io.ktor:ktor-client-ios:$version"
     const val clientJsonNative = "io.ktor:ktor-client-json-native:$version"
     const val clientSerializationIos = "io.ktor:ktor-client-serialization-iosx64:$version"
+    const val clientLoggingIos = "io.ktor:ktor-client-logging-native:$version"
 }

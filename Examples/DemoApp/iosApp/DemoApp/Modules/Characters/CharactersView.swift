@@ -28,12 +28,14 @@ struct CharactersView: View {
     }
 
     func dynamicContainedView() -> AnyView {
-        if viewState is Loading {
+        if viewState is CharactersViewState.Loading {
             return AnyView(ActivityIndicator(style: .large))
-        } else if let contentViewState = viewState as? Content {
+        } else if let contentViewState = viewState as? CharactersViewState.Content {
             return AnyView(
                 List(contentViewState.characters) { character in
-                    NavigationLink(destination: CharacterQuotesAssembler.assemble()) {
+                    NavigationLink(destination:
+                        CharacterQuotesAssembler.assemble(for: character)
+                    ) {
                         HStack {
                             Image(systemName: "heart.fill")
                             Text(character.name)

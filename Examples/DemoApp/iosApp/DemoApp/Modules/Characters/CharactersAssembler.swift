@@ -10,7 +10,7 @@ import shared
 
 class CharactersAssembler {
     static func assemble() -> CharactersView {
-        let store = ObservableStore<CharactersViewState>(baseState: Loading())
+        let store = ObservableStore<CharactersViewState>(baseState: CharactersViewState.Loading())
         let presenter = CharactersPresenterImpl(store: store, api: BreakingBadApi())
         return CharactersView(presenter: presenter, store: store)
     }
