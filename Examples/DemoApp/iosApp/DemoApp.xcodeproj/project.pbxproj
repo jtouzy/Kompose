@@ -17,6 +17,7 @@
 		53B6BFBB23D883CB00A717C0 /* ObservableStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B6BFBA23D883CB00A717C0 /* ObservableStore.swift */; };
 		53B6BFBF23D8845E00A717C0 /* CharactersAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B6BFBE23D8845E00A717C0 /* CharactersAssembler.swift */; };
 		53C60EF423DF0766004537F8 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C60EF323DF0766004537F8 /* ActivityIndicator.swift */; };
+		53C60EF623DF792E004537F8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 53C60EF523DF792E004537F8 /* Localizable.strings */; };
 		53FB5E0623DB121100704A2D /* UI+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FB5E0523DB121100704A2D /* UI+extensions.swift */; };
 		53FB5E0923DB156500704A2D /* CharacterQuotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FB5E0823DB156500704A2D /* CharacterQuotesView.swift */; };
 		53FB5E0B23DB157000704A2D /* CharacterQuotesAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FB5E0A23DB157000704A2D /* CharacterQuotesAssembler.swift */; };
@@ -43,12 +44,12 @@
 		53B6BF8323D848B700A717C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		53B6BF8923D848B700A717C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		53B6BF8B23D848B700A717C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		53B6BFAE23D84CEC00A717C0 /* buildKotlinFrameworks.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = buildKotlinFrameworks.sh; sourceTree = "<group>"; };
 		53B6BFB023D854DB00A717C0 /* shared.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = shared.framework; sourceTree = "<group>"; };
 		53B6BFB523D8834100A717C0 /* CharactersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersView.swift; sourceTree = "<group>"; };
 		53B6BFBA23D883CB00A717C0 /* ObservableStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableStore.swift; sourceTree = "<group>"; };
 		53B6BFBE23D8845E00A717C0 /* CharactersAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersAssembler.swift; sourceTree = "<group>"; };
 		53C60EF323DF0766004537F8 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		53C60EF523DF792E004537F8 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		53FB5E0523DB121100704A2D /* UI+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UI+extensions.swift"; sourceTree = "<group>"; };
 		53FB5E0823DB156500704A2D /* CharacterQuotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterQuotesView.swift; sourceTree = "<group>"; };
 		53FB5E0A23DB157000704A2D /* CharacterQuotesAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterQuotesAssembler.swift; sourceTree = "<group>"; };
@@ -69,7 +70,6 @@
 		53B6BF7123D848B400A717C0 = {
 			isa = PBXGroup;
 			children = (
-				53B6BFAE23D84CEC00A717C0 /* buildKotlinFrameworks.sh */,
 				53B6BF7C23D848B400A717C0 /* DemoApp */,
 				53B6BFAF23D84D4F00A717C0 /* Frameworks */,
 				53B6BF7B23D848B400A717C0 /* Products */,
@@ -88,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				53B6BF8B23D848B700A717C0 /* Info.plist */,
+				53C60EF523DF792E004537F8 /* Localizable.strings */,
 				53B6BF7D23D848B400A717C0 /* AppDelegate.swift */,
 				53B6BF7F23D848B400A717C0 /* SceneDelegate.swift */,
 				53B6BF8323D848B700A717C0 /* Assets.xcassets */,
@@ -166,7 +167,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 53B6BFA423D848B700A717C0 /* Build configuration list for PBXNativeTarget "DemoApp" */;
 			buildPhases = (
-				53B6BFAD23D84A6C00A717C0 /* Generate frameworks from Kotlin MPP */,
+				53B6BFAD23D84A6C00A717C0 /* [SCRIPT] Generate frameworks from Kotlin MPP */,
+				53C60EF723DF79D5004537F8 /* [SCRIPT] Generate Localizable file */,
 				53B6BF7623D848B400A717C0 /* Sources */,
 				53B6BF7723D848B400A717C0 /* Frameworks */,
 				53B6BF7823D848B400A717C0 /* Resources */,
@@ -220,6 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				53B6BF8A23D848B700A717C0 /* LaunchScreen.storyboard in Resources */,
+				53C60EF623DF792E004537F8 /* Localizable.strings in Resources */,
 				53B6BF8423D848B700A717C0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -227,7 +230,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		53B6BFAD23D84A6C00A717C0 /* Generate frameworks from Kotlin MPP */ = {
+		53B6BFAD23D84A6C00A717C0 /* [SCRIPT] Generate frameworks from Kotlin MPP */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -236,14 +239,32 @@
 			);
 			inputPaths = (
 			);
-			name = "Generate frameworks from Kotlin MPP";
+			name = "[SCRIPT] Generate frameworks from Kotlin MPP";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./buildKotlinFrameworks.sh\n";
+			shellScript = "../scripts/build_ios_frameworks.sh $CONFIGURATION\n";
+		};
+		53C60EF723DF79D5004537F8 /* [SCRIPT] Generate Localizable file */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[SCRIPT] Generate Localizable file";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "../scripts/generate_locales_ios.sh\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

@@ -19,6 +19,9 @@ struct CharacterQuotesView: View {
 
     var body: some View {
         VStack {
+            Text("quotes_description")
+                .foregroundColor(.gray)
+                .padding()
             dynamicContainedView()
         }
         .navigationBarTitle(viewState.title)
@@ -27,7 +30,12 @@ struct CharacterQuotesView: View {
 
     func dynamicContainedView() -> AnyView {
         if viewState is CharacterQuotesViewState.Loading {
-            return AnyView(ActivityIndicator(style: .large))
+            return AnyView(
+                Group {
+                    ActivityIndicator(style: .large)
+                    Spacer()
+                }
+            )
         } else if let contentViewState = viewState as? CharacterQuotesViewState.Content {
             return AnyView(
                 List(contentViewState.quotes) { quote in
@@ -39,7 +47,7 @@ struct CharacterQuotesView: View {
                     }
                     .padding()
                 }
-                .listStyle(GroupedListStyle())
+                .listStyle(PlainListStyle())
             )
         }
         return AnyView(Text("Unrecognized state"))
