@@ -3,21 +3,16 @@ package com.jtouzy.demo.app.ui
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.Composable
-import androidx.ui.core.Text
+import androidx.compose.unaryPlus
+import androidx.ui.animation.Crossfade
 import androidx.ui.core.setContent
-import androidx.ui.graphics.Color
-import androidx.ui.layout.Column
-import androidx.ui.material.ColorPalette
 import androidx.ui.material.MaterialTheme
-import androidx.ui.material.TopAppBar
-import androidx.ui.tooling.preview.Preview
-import com.jtouzy.demo.app.ui.home.HomeScreen
-import com.jtouzy.demo.app.ui.home.LoadingScreen
+import androidx.ui.material.surface.Surface
+import com.jtouzy.demo.app.ui.characters.CharactersScreen
+import com.jtouzy.demo.app.ui.quote.QuoteScreen
 import com.jtouzy.demo.ui.Store
 import com.jtouzy.demo.ui.characters.CharactersPresenter
 import com.jtouzy.demo.ui.characters.CharactersViewState
-import com.jtouzy.demo.ui.characters.Content
-import com.jtouzy.demo.ui.characters.Loading
 import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity() {
@@ -27,23 +22,28 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent { getContent() }
+        setContent { KomposeApp() }
         presenter.loadCharacters()
     }
 
-    @Preview
+    override fun onBackPressed() {
+        if (!NavigationManager.popBackStack()) super.onBackPressed()
+    }
+
     @Composable
-    fun getContent() {
-        MaterialTheme(
-            colors = ColorPalette(
-                primary = Color(0xFF, 0x00, 0x00)
-            )
-        ) {
-            Column {
-                TopAppBar(title = { Text("Demo") })
-                when (val state = store.currentState) {
-                    Loading -> LoadingScreen()
-                    is Content -> HomeScreen(state.characters)
+    private fun KomposeApp() {
+        MaterialTheme(colors = themeColors) {
+            AppContent()
+        }
+    }
+
+    @Composable
+    private fun AppContent() {
+        Crossfade(NavigationManager.currentScreen) { screen ->
+            Surface(color = (+MaterialTheme.colors()).background) {
+                when (screen) {
+                    Screen.Home -> CharactersScreen(store)
+                    Screen.Quote -> QuoteScreen()
                 }
             }
         }
