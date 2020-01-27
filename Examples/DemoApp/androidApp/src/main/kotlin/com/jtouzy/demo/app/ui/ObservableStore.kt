@@ -6,7 +6,4 @@ import com.jtouzy.demo.ui.ViewState
 
 @Model
 class ObservableStore<T: ViewState>(override var currentState: T) : Store<T> {
-    override fun update(viewState: T) {
-        currentState = viewState
-    }
 }

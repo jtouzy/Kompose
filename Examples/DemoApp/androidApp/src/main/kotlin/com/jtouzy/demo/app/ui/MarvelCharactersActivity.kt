@@ -42,9 +42,9 @@ class MarvelCharactersActivity : AppCompatActivity() {
         ) {
             Column {
                 TopAppBar(title = { Text("Demo") })
-                when(store.currentState) {
+                when(val state = store.currentState) {
                     Loading -> getLoadingView()
-                    is Content -> getContentView(store.currentState as Content)
+                    is Content -> getContentView(state)
                 }
             }
         }

@@ -7,8 +7,6 @@ class MarvelCharactersPresenterImpl(
 ) : MarvelCharactersPresenter {
 
     override fun loadCharacters() {
-        store.update(
-            Content(listOf("Hulk", "Iron Man", "Thor"))
-        )
+        store.currentState = Content(listOf("Hulk", "Iron Man", "Thor"))
     }
 }

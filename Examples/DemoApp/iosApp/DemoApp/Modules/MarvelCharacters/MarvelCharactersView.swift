@@ -25,7 +25,7 @@ struct MarvelCharactersView: View {
             containedView()
         }.onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-                self.presenter.loadCharaters()
+                self.presenter.loadCharacters()
             })
         }
     }
