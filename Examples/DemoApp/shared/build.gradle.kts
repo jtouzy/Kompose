@@ -4,6 +4,7 @@ plugins {
     kotlin("multiplatform")
     id("com.android.library")
     id("org.jetbrains.kotlin.plugin.serialization")
+    id("co.touchlab.kotlinxcodesync")
 }
 
 android {
@@ -74,6 +75,11 @@ kotlin {
             implementation(Ktor.clientSerializationIos)
         }
     }
+}
+
+xcodeSync {
+    projectPath = "../../iosApp/iosApp.xcodeproj"
+    target = "iosApp"
 }
 
 val packForXcode by tasks.creating(Sync::class) {
