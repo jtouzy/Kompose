@@ -14,6 +14,7 @@ import androidx.ui.material.ColorPalette
 import androidx.ui.material.MaterialTheme
 import androidx.ui.material.TopAppBar
 import androidx.ui.tooling.preview.Preview
+import com.jtouzy.demo.ui.Store
 import com.jtouzy.demo.ui.characters.Content
 import com.jtouzy.demo.ui.characters.Loading
 import com.jtouzy.demo.ui.characters.MarvelCharactersPresenter
@@ -23,7 +24,7 @@ import org.koin.android.ext.android.inject
 class MarvelCharactersActivity : AppCompatActivity() {
 
     private val presenter by inject<MarvelCharactersPresenter>()
-    private val store by inject<ObservableStore<MarvelCharactersViewState>>()
+    private val store by inject<Store<MarvelCharactersViewState>>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,9 +42,9 @@ class MarvelCharactersActivity : AppCompatActivity() {
         ) {
             Column {
                 TopAppBar(title = { Text("Demo") })
-                when(store.state) {
+                when(store.currentState) {
                     Loading -> getLoadingView()
-                    is Content -> getContentView(store.state as Content)
+                    is Content -> getContentView(store.currentState as Content)
                 }
             }
         }

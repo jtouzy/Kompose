@@ -5,8 +5,8 @@ import com.jtouzy.demo.ui.Store
 import com.jtouzy.demo.ui.ViewState
 
 @Model
-class ObservableStore<T: ViewState>(var state: T) : Store<T> {
+class ObservableStore<T: ViewState>(override var currentState: T) : Store<T> {
     override fun update(viewState: T) {
-        state = viewState
+        currentState = viewState
     }
 }
