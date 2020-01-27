@@ -1,14 +1,18 @@
 package com.jtouzy.demo.app.di
 
-import com.jtouzy.demo.app.ui.MarvelCharactersDispatcher
-import com.jtouzy.demo.marvelcharacters.MarvelCharactersPresenter
-import com.jtouzy.demo.marvelcharacters.MarvelCharactersPresenterImpl
-import com.jtouzy.demo.marvelcharacters.MarvelCharactersViewState
-import com.jtouzy.demo.ui.Dispatcher
+import com.jtouzy.demo.app.ui.MarvelCharactersStore
+import com.jtouzy.demo.app.ui.ScreenProvider
+import com.jtouzy.demo.network.MarvelApi
+import com.jtouzy.demo.ui.Store
+import com.jtouzy.demo.ui.characters.MarvelCharactersPresenter
+import com.jtouzy.demo.ui.characters.MarvelCharactersPresenterImpl
+import com.jtouzy.demo.ui.characters.MarvelCharactersViewState
 import org.koin.dsl.module
 
 val appModule = module {
 
-    single<Dispatcher<MarvelCharactersViewState>> { MarvelCharactersDispatcher() }
-    factory<MarvelCharactersPresenter> { MarvelCharactersPresenterImpl(get()) }
+    single { ScreenProvider() }
+    single { MarvelApi() }
+    single<Store<MarvelCharactersViewState>> { MarvelCharactersStore(get()) }
+    factory<MarvelCharactersPresenter> { MarvelCharactersPresenterImpl(get(), get()) }
 }
