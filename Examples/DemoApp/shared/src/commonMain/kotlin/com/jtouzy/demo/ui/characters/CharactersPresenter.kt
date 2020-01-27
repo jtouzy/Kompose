@@ -1,5 +1,5 @@
 package com.jtouzy.demo.ui.characters
 
-interface MarvelCharactersPresenter {
+interface CharactersPresenter {
     fun loadCharacters()
 }

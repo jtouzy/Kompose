@@ -14,16 +14,6 @@
   ~ limitations under the License.
   -->
 <resources>
-    <color name="primary">#FFFFFF</color>
-    <color name="primary_variant">#262626</color>
-    <color name="secondary">#942102</color>
-    <color name="surface">#FAFAFA</color>
-    <color name="navigation_bar">#262626</color>
-
-    <color name="on_primary">#666666</color>
-    <color name="on_secondary">#FFFFFF</color>
-    <color name="on_background">#666666</color>
-    <color name="on_surface">#666666</color>
-
-    <color name="overlay">#44000000</color>
+    <color name="colorPrimary">#DD0D3E</color>
+    <color name="colorPrimaryDark">#C20029</color>
 </resources>

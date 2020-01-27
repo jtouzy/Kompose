@@ -3,8 +3,6 @@ package com.jtouzy.demo.app.ui
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.Composable
-import androidx.compose.unaryPlus
-import androidx.ui.animation.Crossfade
 import androidx.ui.core.Text
 import androidx.ui.core.setContent
 import androidx.ui.graphics.Color
@@ -13,20 +11,19 @@ import androidx.ui.material.ColorPalette
 import androidx.ui.material.MaterialTheme
 import androidx.ui.material.TopAppBar
 import androidx.ui.tooling.preview.Preview
-import com.jtouzy.demo.ui.Store
-import com.jtouzy.demo.ui.characters.Content
-import com.jtouzy.demo.ui.characters.Loading
-import androidx.ui.material.surface.Surface
 import com.jtouzy.demo.app.ui.home.HomeScreen
 import com.jtouzy.demo.app.ui.home.LoadingScreen
-import com.jtouzy.demo.ui.characters.MarvelCharactersPresenter
-import com.jtouzy.demo.ui.characters.MarvelCharactersViewState
+import com.jtouzy.demo.ui.Store
+import com.jtouzy.demo.ui.characters.CharactersPresenter
+import com.jtouzy.demo.ui.characters.CharactersViewState
+import com.jtouzy.demo.ui.characters.Content
+import com.jtouzy.demo.ui.characters.Loading
 import org.koin.android.ext.android.inject
 
-class MarvelCharactersActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
-    private val presenter by inject<MarvelCharactersPresenter>()
-    private val store by inject<Store<MarvelCharactersViewState>>()
+    private val presenter by inject<CharactersPresenter>()
+    private val store by inject<Store<CharactersViewState>>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,25 +41,9 @@ class MarvelCharactersActivity : AppCompatActivity() {
         ) {
             Column {
                 TopAppBar(title = { Text("Demo") })
-                when(val state = store.currentState) {
-                    Loading -> getLoadingView()
-                    is Content -> getContentView(state)
-                }
-            }
-        }
-    }
-
-    @Composable
-    fun getLoadingView() {
-        Text(text = "Loading")
-    }
-
-    @Composable
-    fun getContentView(state: Content) {
-        VerticalScroller {
-            Column {
-                state.characters.forEach {
-                    Padding(16.dp) { Text(text = it) }
+                when (val state = store.currentState) {
+                    Loading -> LoadingScreen()
+                    is Content -> HomeScreen(state.characters)
                 }
             }
         }

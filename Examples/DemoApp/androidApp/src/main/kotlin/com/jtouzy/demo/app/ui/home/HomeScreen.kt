@@ -7,10 +7,10 @@ import androidx.ui.foundation.VerticalScroller
 import androidx.ui.layout.Center
 import androidx.ui.layout.Column
 import androidx.ui.layout.Padding
-import com.jtouzy.demo.network.MarvelCharacter
+import com.jtouzy.demo.ui.model.Character
 
 @Composable
-fun HomeScreen(characters: List<MarvelCharacter>) {
+fun HomeScreen(characters: List<Character>) {
     VerticalScroller {
         Column {
             characters.forEach {

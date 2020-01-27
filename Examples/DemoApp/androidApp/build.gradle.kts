@@ -75,6 +75,7 @@ android {
         exclude("**/*.xml")
         exclude("**/*.properties")
     }
+
     buildFeatures {
         compose = true
     }
@@ -83,21 +84,10 @@ android {
 dependencies {
     implementation(project(":shared"))
     implementation(kotlin("stdlib", Build.Versions.kotlin))
-    implementation(Coroutines.core)
-    implementation(Coroutines.android)
     implementation(AndroidX.appCompat)
     implementation(AndroidX.coreKtx)
-    implementation(AndroidX.recyclerView)
-    implementation(AndroidX.constraintLayout)
-    implementation(AndroidX.lifecyleViewmodel)
-    implementation(AndroidX.navFragment)
-    implementation(AndroidX.navUi)
-    implementation(Google.material)
     implementation(Libs.koinAndroid)
-    implementation(Libs.coil)
-    implementation(Libs.jsr310)
     implementation(Libs.timber)
-    implementation(Libs.uniflow)
     implementation(AndroidX.composeFoundation)
     implementation(AndroidX.composeFramework)
     implementation(AndroidX.composeLayout)
