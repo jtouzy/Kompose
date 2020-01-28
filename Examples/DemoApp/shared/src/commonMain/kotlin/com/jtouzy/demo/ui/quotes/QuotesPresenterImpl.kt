@@ -1,4 +1,4 @@
-package com.jtouzy.demo.ui.characterquotes
+package com.jtouzy.demo.ui.quotes
 
 import com.jtouzy.demo.network.BreakingBadApi
 import com.jtouzy.demo.ui.Store
@@ -10,17 +10,17 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class CharacterQuotesPresenterImpl(
-    private val store: Store<CharacterQuotesViewState>,
-    private val api: BreakingBadApi,
-    private val character: Character
-) : CharacterQuotesPresenter {
+class QuotesPresenterImpl(
+        private val store: Store<QuotesViewState>,
+        private val api: BreakingBadApi,
+        private val character: Character
+) : QuotesPresenter {
 
     override fun loadQuotesForCharacter() {
         GlobalScope.launch(mainDispatcher) {
-            store.currentState = CharacterQuotesViewState.Loading(title = character.name)
+            store.currentState = QuotesViewState.Loading(character.name)
             val quotes = withContext(ioDispatcher) { api.getCharacterQuotes(character.name) }
-            store.currentState = CharacterQuotesViewState.Content(
+            store.currentState = QuotesViewState.Content(
                 title = character.name,
                 quotes = quotes.map { Quote(it) }
             )

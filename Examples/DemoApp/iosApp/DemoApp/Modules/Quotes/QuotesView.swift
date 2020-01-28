@@ -1,5 +1,5 @@
 //
-//  CharacterQuotesView.swift
+//  QuotesView.swift
 //  DemoApp
 //
 //  Created by Jérémy TOUZY on 24/01/2020.
@@ -12,10 +12,10 @@ import shared
 //
 // MARK: View Layout
 //
-struct CharacterQuotesView: View {
-    let presenter: CharacterQuotesPresenter
-    @ObservedObject var store: ObservableStore<CharacterQuotesViewState>
-    var viewState: CharacterQuotesViewState { store.state }
+struct QuotesView: View {
+    let presenter: QuotesPresenter
+    @ObservedObject var store: ObservableStore<QuotesViewState>
+    var viewState: QuotesViewState { store.state }
 
     var body: some View {
         VStack {
@@ -29,14 +29,14 @@ struct CharacterQuotesView: View {
     }
 
     func dynamicContainedView() -> AnyView {
-        if viewState is CharacterQuotesViewState.Loading {
+        if viewState is QuotesViewState.Loading {
             return AnyView(
                 Group {
                     ActivityIndicator(style: .large)
                     Spacer()
                 }
             )
-        } else if let contentViewState = viewState as? CharacterQuotesViewState.Content {
+        } else if let contentViewState = viewState as? QuotesViewState.Content {
             return AnyView(
                 List(contentViewState.quotes) { quote in
                     VStack(alignment: .leading) {
@@ -57,7 +57,7 @@ struct CharacterQuotesView: View {
 //
 // MARK: Events
 //
-extension CharacterQuotesView {
+extension QuotesView {
     func onViewAppear() {
         presenter.loadQuotesForCharacter()
     }

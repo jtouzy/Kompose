@@ -34,7 +34,7 @@ struct CharactersView: View {
             return AnyView(
                 List(contentViewState.characters) { character in
                     NavigationLink(destination:
-                        CharacterQuotesAssembler.assemble(for: character)
+                        QuotesAssembler.assemble(for: character)
                     ) {
                         HStack {
                             Image(systemName: "heart.fill")

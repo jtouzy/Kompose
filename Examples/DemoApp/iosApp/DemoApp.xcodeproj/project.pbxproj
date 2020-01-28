@@ -19,8 +19,8 @@
 		53C60EF423DF0766004537F8 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C60EF323DF0766004537F8 /* ActivityIndicator.swift */; };
 		53C60EF623DF792E004537F8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 53C60EF523DF792E004537F8 /* Localizable.strings */; };
 		53FB5E0623DB121100704A2D /* UI+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FB5E0523DB121100704A2D /* UI+extensions.swift */; };
-		53FB5E0923DB156500704A2D /* CharacterQuotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FB5E0823DB156500704A2D /* CharacterQuotesView.swift */; };
-		53FB5E0B23DB157000704A2D /* CharacterQuotesAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FB5E0A23DB157000704A2D /* CharacterQuotesAssembler.swift */; };
+		53FB5E0923DB156500704A2D /* QuotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FB5E0823DB156500704A2D /* QuotesView.swift */; };
+		53FB5E0B23DB157000704A2D /* QuotesAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FB5E0A23DB157000704A2D /* QuotesAssembler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -51,8 +51,8 @@
 		53C60EF323DF0766004537F8 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		53C60EF523DF792E004537F8 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		53FB5E0523DB121100704A2D /* UI+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UI+extensions.swift"; sourceTree = "<group>"; };
-		53FB5E0823DB156500704A2D /* CharacterQuotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterQuotesView.swift; sourceTree = "<group>"; };
-		53FB5E0A23DB157000704A2D /* CharacterQuotesAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterQuotesAssembler.swift; sourceTree = "<group>"; };
+		53FB5E0823DB156500704A2D /* QuotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesView.swift; sourceTree = "<group>"; };
+		53FB5E0A23DB157000704A2D /* QuotesAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesAssembler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,7 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				53B6BFB723D8834600A717C0 /* Characters */,
-				53FB5E0723DB154B00704A2D /* CharacterQuotes */,
+				53FB5E0723DB154B00704A2D /* Quotes */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -151,13 +151,13 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		53FB5E0723DB154B00704A2D /* CharacterQuotes */ = {
+		53FB5E0723DB154B00704A2D /* Quotes */ = {
 			isa = PBXGroup;
 			children = (
-				53FB5E0823DB156500704A2D /* CharacterQuotesView.swift */,
-				53FB5E0A23DB157000704A2D /* CharacterQuotesAssembler.swift */,
+				53FB5E0823DB156500704A2D /* QuotesView.swift */,
+				53FB5E0A23DB157000704A2D /* QuotesAssembler.swift */,
 			);
-			path = CharacterQuotes;
+			path = Quotes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,9 +279,9 @@
 				53B6BF8023D848B400A717C0 /* SceneDelegate.swift in Sources */,
 				53B6BFB623D8834100A717C0 /* CharactersView.swift in Sources */,
 				53B6BFBB23D883CB00A717C0 /* ObservableStore.swift in Sources */,
-				53FB5E0B23DB157000704A2D /* CharacterQuotesAssembler.swift in Sources */,
+				53FB5E0B23DB157000704A2D /* QuotesAssembler.swift in Sources */,
 				53C60EF423DF0766004537F8 /* ActivityIndicator.swift in Sources */,
-				53FB5E0923DB156500704A2D /* CharacterQuotesView.swift in Sources */,
+				53FB5E0923DB156500704A2D /* QuotesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
