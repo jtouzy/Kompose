@@ -1,6 +1,7 @@
 package com.jtouzy.demo.app.ui.quote
 
 import androidx.compose.Composable
+import androidx.ui.animation.Crossfade
 import androidx.ui.core.Text
 import androidx.ui.core.dp
 import androidx.ui.foundation.VerticalScroller
@@ -15,17 +16,17 @@ import com.jtouzy.demo.app.ui.NavigationManager
 import com.jtouzy.demo.app.ui.ObservableStore
 import com.jtouzy.demo.app.ui.VectorImageButton
 import com.jtouzy.demo.app.ui.generic.LoadingScreen
-import com.jtouzy.demo.network.BreakingBadApi
+import com.jtouzy.demo.cache.DataStore
 import com.jtouzy.demo.ui.model.Character
 import com.jtouzy.demo.ui.model.Quote
 import com.jtouzy.demo.ui.quotes.QuotesPresenterImpl
 import com.jtouzy.demo.ui.quotes.QuotesViewState
 import timber.log.Timber
 
-class QuoteScreen(api: BreakingBadApi, character: Character) {
+class QuoteScreen(dataStore: DataStore, character: Character) {
 
     private val store = ObservableStore<QuotesViewState>(QuotesViewState.Loading(character.name))
-    private val presenter = QuotesPresenterImpl(store, api, character)
+    private val presenter = QuotesPresenterImpl(store, dataStore, character)
 
     init {
         presenter.loadQuotes()
@@ -42,23 +43,22 @@ class QuoteScreen(api: BreakingBadApi, character: Character) {
                     }
                 }
             )
-            when (val state = store.currentState) {
-                is QuotesViewState.Loading -> LoadingScreen()
-                is QuotesViewState.Content -> QuoteList(state.quotes)
+            Crossfade(store.currentState) { state ->
+                when (state) {
+                    is QuotesViewState.Loading -> LoadingScreen()
+                    is QuotesViewState.Content -> QuoteList(state.quotes)
+                    is QuotesViewState.NoQuote -> NoQuote()
+                }
             }
         }
     }
 
     @Composable
     private fun QuoteList(quotes: List<Quote>) {
-        if (quotes.isEmpty()) {
-            NoQuote()
-        } else {
-            VerticalScroller {
-                Column {
-                    Timber.d(quotes.toString())
-                    quotes.forEach { QuoteItem(it) }
-                }
+        VerticalScroller {
+            Column {
+                Timber.d(quotes.toString())
+                quotes.forEach { QuoteItem(it) }
             }
         }
     }

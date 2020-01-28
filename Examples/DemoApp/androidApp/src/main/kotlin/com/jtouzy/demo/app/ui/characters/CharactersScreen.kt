@@ -2,6 +2,7 @@ package com.jtouzy.demo.app.ui.characters
 
 import androidx.compose.Composable
 import androidx.compose.unaryPlus
+import androidx.ui.animation.Crossfade
 import androidx.ui.core.Text
 import androidx.ui.core.dp
 import androidx.ui.foundation.Clickable
@@ -18,15 +19,15 @@ import com.jtouzy.demo.app.ui.NavigationManager
 import com.jtouzy.demo.app.ui.ObservableStore
 import com.jtouzy.demo.app.ui.Screen
 import com.jtouzy.demo.app.ui.generic.LoadingScreen
-import com.jtouzy.demo.network.BreakingBadApi
+import com.jtouzy.demo.cache.DataStore
 import com.jtouzy.demo.ui.characters.CharactersPresenterImpl
 import com.jtouzy.demo.ui.characters.CharactersViewState
 import com.jtouzy.demo.ui.model.Character
 
-class CharactersScreen(api: BreakingBadApi) {
+class CharactersScreen(dataStore: DataStore) {
 
     private val store = ObservableStore<CharactersViewState>(CharactersViewState.Loading)
-    private val presenter = CharactersPresenterImpl(store, api)
+    private val presenter = CharactersPresenterImpl(store, dataStore)
 
     init {
         presenter.loadCharacters()
@@ -36,9 +37,11 @@ class CharactersScreen(api: BreakingBadApi) {
     fun MainScreen() {
         Column {
             TopAppBar(title = { Text(text = +stringResource(R.string.app_name)) })
-            when (val state = store.currentState) {
-                CharactersViewState.Loading -> LoadingScreen()
-                is CharactersViewState.Content -> CharacterList(state.characters)
+            Crossfade(store.currentState) { state ->
+                when (state) {
+                    CharactersViewState.Loading -> LoadingScreen()
+                    is CharactersViewState.Content -> CharacterList(state.characters)
+                }
             }
         }
     }
