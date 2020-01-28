@@ -88,6 +88,7 @@ dependencies {
     implementation(AndroidX.coreKtx)
     implementation(Libs.koinAndroid)
     implementation(Libs.timber)
+    implementation(Libs.coil)
     implementation(AndroidX.composeFoundation)
     implementation(AndroidX.composeFramework)
     implementation(AndroidX.composeLayout)
