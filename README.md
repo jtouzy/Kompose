@@ -51,9 +51,43 @@ As you can see, all the common code is built on a common Kotlin layer, and only 
 
 Let's see all the pieces in details.
 
-`<WIP>`
+#### Some details
 
-#### Debugging features
+* **ViewState** : A view state is a temporal state of your `View`. 
+The state is retained by the `Store`.
+
+* **Store** : A store retains a `ViewState`.
+The `Presenter` will send to the `Store` a new view state, and the `View` will react to this and redraw.
+
+*This layer is here to customize how the view will react to a view state update.
+In this example, for iOS, SwiftUI binding is used to react to the state change with `ObservableStore`.
+But you can also implements another version of the Store, that will handle a Delegate or an Rx Subject to handle state changes, if you can't use SwiftUI yet.*
+
+* **Assembler (iOS)** : An assembler is here to merge it all together.
+The assembler will create the whole module, initializing the presenter, the view, and the store, then linking it together.
+
+*This layer is used because in Swift we don't have yet a proper DI like [Koin](https://github.com/InsertKoinIO/koin) for Android.*
+
+### Speed up your multiplatform development
+
+#### 🚀 [iOS] Automatically generate a new framework with the last Kotlin classes in each build ?
+
+You can add a `Run Script` to the `Build phases` of your project, which will just launch a gradle `packForXcode` command.
+You can find an example of the `build_ios_frameworks.sh` script in the demo app.
+
+#### 🚀 [iOS] Debug Kotlin classes from an imported framework in Xcode ?
+
+Two steps :
 
 * 1/ Use [XcodeSync dependency](https://github.com/touchlab/KotlinXcodeSync) in your Kotlin Native plugin for generating framework : 
 * 2/ Use [Xcode plugin](https://github.com/touchlab/xcode-kotlin) for reading *.kt files
+
+The configuration is set in the demo app.
+
+#### 🚀 Use a single locale file for iOS and Android ?
+
+You can use [Twine](https://github.com/scelis/twine) to have a single file reference for all your application locales. Twine is a command line tool that will generate you a `Localizable.strings` file for iOS and a `strings.xml` file for Android, based on a single `.twine` file. 
+
+Again, for iOS, with a simple `Run Script` in your `Build Phases`, you can generate your strings in each build.
+
+You can find an example in the demo app.
