@@ -1,5 +1,5 @@
 //
-//  Character+extension.swift
+//  UI+extensions.swift
 //  DemoApp
 //
 //  Created by Jérémy TOUZY on 24/01/2020.
@@ -11,5 +11,11 @@ import shared
 extension Character: Identifiable {
     public var id: String {
         return name
+    }
+}
+
+extension Quote: Identifiable {
+    public var id: String {
+        return quote
     }
 }

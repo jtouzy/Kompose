@@ -1,22 +1,21 @@
 #!/bin/sh
 
-#  buildKotlinFrameworks.sh
-#  DemoApp
-#
-#  Created by Jérémy TOUZY on 22/01/2020.
-#  Copyright © 2020 jtouzy. All rights reserved.
+# Build IOS Frameworks on Xcode build
+# First param must be the Xcode configuration param $CONFIGURATION
 
 # Variables
+shell_dir=$(dirname "$0")
 frameworkName=shared.framework
+xcode_configuration=$1
 
 # Move to parent project
-cd "$PROJECT_DIR"/../
+cd "$shell_dir"/../
 
 # Generate xcode frameworks by gradlew
-./gradlew :shared:packForXCode -PXCODE_CONFIGURATION=${CONFIGURATION}
+./gradlew :shared:packForXCode -PXCODE_CONFIGURATION=${xcode_configuration}
 
 # Move to destination project
-cd "$PROJECT_DIR"
+cd iosApp
 
 # Clean old framework + dSYM
 rm -rf ./Frameworks/"$frameworkName"

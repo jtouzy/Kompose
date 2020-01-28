@@ -51,6 +51,7 @@ kotlin {
             implementation(Ktor.clientCore)
             implementation(Ktor.clientJson)
             implementation(Ktor.clientSerialization)
+            implementation(Ktor.clientLogging)
             implementation("com.soywiz.korlibs.krypto:krypto:1.9.1")
             implementation("com.soywiz.korlibs.klock:klock:1.8.6")
         }
@@ -59,9 +60,9 @@ kotlin {
             implementation(kotlin("stdlib", Build.Versions.kotlin))
             implementation(Coroutines.android)
             implementation(Serialization.runtime)
-            implementation(Ktor.clientOkttp)
             implementation(Ktor.clientJsonJvm)
             implementation(Ktor.clientSerializationJvm)
+            implementation(Ktor.clientLoggingJvm)
             implementation(AndroidX.appCompat)
             implementation(AndroidX.coreKtx)
             implementation(Libs.jsr310)
@@ -73,6 +74,7 @@ kotlin {
             implementation(Ktor.clientIos)
             implementation(Ktor.clientJsonNative)
             implementation(Ktor.clientSerializationIos)
+            implementation(Ktor.clientLoggingIos)
         }
     }
 }

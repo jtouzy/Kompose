@@ -19,8 +19,6 @@ import com.jtouzy.demo.app.ui.NavigationManager
 import com.jtouzy.demo.app.ui.Screen
 import com.jtouzy.demo.ui.Store
 import com.jtouzy.demo.ui.characters.CharactersViewState
-import com.jtouzy.demo.ui.characters.Content
-import com.jtouzy.demo.ui.characters.Loading
 import com.jtouzy.demo.ui.model.Character
 
 @Composable
@@ -28,8 +26,8 @@ fun CharactersScreen(store: Store<CharactersViewState>) {
     Column {
         TopAppBar(title = { Text(text = +stringResource(R.string.app_name)) })
         when (val state = store.currentState) {
-            Loading -> LoadingScreen()
-            is Content -> CharacterList(state.characters)
+            CharactersViewState.Loading -> LoadingScreen()
+            is CharactersViewState.Content -> CharacterList(state.characters)
         }
     }
 }
