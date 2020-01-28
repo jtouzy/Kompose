@@ -11,12 +11,12 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class QuotesPresenterImpl(
-        private val store: Store<QuotesViewState>,
-        private val api: BreakingBadApi,
-        private val character: Character
+    private val store: Store<QuotesViewState>,
+    private val api: BreakingBadApi,
+    private val character: Character
 ) : QuotesPresenter {
 
-    override fun loadQuotesForCharacter() {
+    override fun loadQuotes() {
         GlobalScope.launch(mainDispatcher) {
             store.currentState = QuotesViewState.Loading(character.name)
             val quotes = withContext(ioDispatcher) { api.getCharacterQuotes(character.name) }

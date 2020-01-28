@@ -59,6 +59,6 @@ struct QuotesView: View {
 //
 extension QuotesView {
     func onViewAppear() {
-        presenter.loadQuotesForCharacter()
+        presenter.loadQuotes()
     }
 }
