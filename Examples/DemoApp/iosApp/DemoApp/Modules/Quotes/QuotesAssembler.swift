@@ -14,7 +14,7 @@ class QuotesAssembler {
             baseState: QuotesViewState.Loading(title: character.name)
         )
         let presenter = QuotesPresenterImpl(
-            store: store, api: BreakingBadApi(), character: character
+            store: store, dataStore: Factory.dataStore, character: character
         )
         return QuotesView(presenter: presenter, store: store)
     }

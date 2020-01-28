@@ -37,7 +37,7 @@ struct CharactersView: View {
                         QuotesAssembler.assemble(for: character)
                     ) {
                         HStack {
-                            Image(systemName: "heart.fill")
+                            URLImage(imageData: ObservableImageData(imageURL: character.imageUrl))
                             Text(character.name)
                         }
                         .padding()

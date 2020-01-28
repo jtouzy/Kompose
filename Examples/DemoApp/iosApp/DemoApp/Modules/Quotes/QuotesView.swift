@@ -19,22 +19,20 @@ struct QuotesView: View {
 
     var body: some View {
         VStack {
-            Text("quotes_description")
-                .foregroundColor(.gray)
-                .padding()
             dynamicContainedView()
         }
-        .navigationBarTitle(viewState.title)
+        .navigationBarTitle(Text(viewState.title), displayMode: .inline)
         .onAppear { self.onViewAppear() }
     }
 
     func dynamicContainedView() -> AnyView {
         if viewState is QuotesViewState.Loading {
             return AnyView(
-                Group {
-                    ActivityIndicator(style: .large)
-                    Spacer()
-                }
+                ActivityIndicator(style: .large)
+            )
+        } else if viewState is QuotesViewState.NoQuote {
+            return AnyView(
+                Text("no_quotes")
             )
         } else if let contentViewState = viewState as? QuotesViewState.Content {
             return AnyView(
