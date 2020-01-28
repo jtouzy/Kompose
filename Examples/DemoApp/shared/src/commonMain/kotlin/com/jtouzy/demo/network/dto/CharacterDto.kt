@@ -1,10 +1,11 @@
 package com.jtouzy.demo.network.dto
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class CharacterDto(
-    val char_id: Int,
+    @SerialName("char_id") val id: Int,
     val name: String,
     val birthday: String,
     val occupation: List<String>,

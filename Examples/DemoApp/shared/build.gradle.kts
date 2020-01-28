@@ -60,6 +60,7 @@ kotlin {
             implementation(kotlin("stdlib", Build.Versions.kotlin))
             implementation(Coroutines.android)
             implementation(Serialization.runtime)
+            implementation(Ktor.clientOkttp)
             implementation(Ktor.clientJsonJvm)
             implementation(Ktor.clientSerializationJvm)
             implementation(Ktor.clientLoggingJvm)
