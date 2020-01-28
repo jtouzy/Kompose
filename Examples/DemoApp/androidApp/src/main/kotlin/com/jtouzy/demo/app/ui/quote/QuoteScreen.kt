@@ -13,20 +13,17 @@ import androidx.ui.material.Divider
 import androidx.ui.material.TopAppBar
 import com.jtouzy.demo.app.R
 import com.jtouzy.demo.app.ui.NavigationManager
-import com.jtouzy.demo.app.ui.ObservableStore
 import com.jtouzy.demo.app.ui.VectorImageButton
 import com.jtouzy.demo.app.ui.generic.LoadingScreen
-import com.jtouzy.demo.cache.DataStore
-import com.jtouzy.demo.ui.model.Character
+import com.jtouzy.demo.ui.Store
 import com.jtouzy.demo.ui.model.Quote
-import com.jtouzy.demo.ui.quotes.QuotesPresenterImpl
+import com.jtouzy.demo.ui.quotes.QuotesPresenter
 import com.jtouzy.demo.ui.quotes.QuotesViewState
-import timber.log.Timber
 
-class QuoteScreen(dataStore: DataStore, character: Character) {
-
-    private val store = ObservableStore<QuotesViewState>(QuotesViewState.Loading(character.name))
-    private val presenter = QuotesPresenterImpl(store, dataStore, character)
+class QuoteScreen(
+    private val store: Store<QuotesViewState>,
+    presenter: QuotesPresenter
+) {
 
     init {
         presenter.loadQuotes()
@@ -57,7 +54,6 @@ class QuoteScreen(dataStore: DataStore, character: Character) {
     private fun QuoteList(quotes: List<Quote>) {
         VerticalScroller {
             Column {
-                Timber.d(quotes.toString())
                 quotes.forEach { QuoteItem(it) }
             }
         }
