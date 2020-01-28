@@ -32,6 +32,7 @@ buildscript {
         classpath(kotlin("gradle-plugin", Build.Versions.kotlin))
         classpath(kotlin("serialization", Build.Versions.kotlin))
         classpath(Build.androidGradle)
+        classpath(Build.xcodeSync)
     }
 }
 

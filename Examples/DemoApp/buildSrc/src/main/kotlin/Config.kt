@@ -19,9 +19,11 @@ object Build {
     object Versions {
         const val kotlin = "1.3.61"
         const val androidGradle = "4.0.0-alpha09"
+        const val xcodeSync = "0.2"
     }
 
     const val androidGradle = "com.android.tools.build:gradle:${Versions.androidGradle}"
+    const val xcodeSync = "co.touchlab:kotlinxcodesync:${Versions.xcodeSync}"
 }
 
 object Android {
