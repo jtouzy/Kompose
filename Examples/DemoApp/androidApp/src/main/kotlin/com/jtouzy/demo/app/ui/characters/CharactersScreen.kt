@@ -6,6 +6,7 @@ import androidx.ui.animation.Crossfade
 import androidx.ui.core.Text
 import androidx.ui.core.dp
 import androidx.ui.foundation.Clickable
+import androidx.ui.foundation.DrawImage
 import androidx.ui.foundation.VerticalScroller
 import androidx.ui.graphics.Color
 import androidx.ui.layout.*
@@ -16,8 +17,8 @@ import androidx.ui.res.stringResource
 import com.jtouzy.demo.app.R
 import com.jtouzy.demo.app.ui.NavigationManager
 import com.jtouzy.demo.app.ui.Screen
-import com.jtouzy.demo.app.ui.VectorImage
 import com.jtouzy.demo.app.ui.generic.LoadingScreen
+import com.jtouzy.demo.app.ui.generic.image
 import com.jtouzy.demo.ui.Store
 import com.jtouzy.demo.ui.characters.CharactersPresenter
 import com.jtouzy.demo.ui.characters.CharactersViewState
@@ -63,7 +64,10 @@ class CharactersScreen(
                 Column {
                     Row {
                         Padding(16.dp) {
-                            VectorImage(Size(40.dp, 40.dp), R.drawable.ic_baseline_tag_faces_24, Color.Black)
+                            val image = +image(character.imageUrl)
+                            Container(width = 32.dp, height = 32.dp) {
+                                image?.let { DrawImage(it) }
+                            }
                         }
                         Text(modifier = Gravity.Center, text = character.name)
                     }

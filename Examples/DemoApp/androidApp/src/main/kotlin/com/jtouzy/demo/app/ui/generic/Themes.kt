@@ -1,4 +1,4 @@
-package com.jtouzy.demo.app.ui
+package com.jtouzy.demo.app.ui.generic
 
 import androidx.ui.graphics.Color
 import androidx.ui.material.ColorPalette

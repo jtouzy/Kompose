@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.jtouzy.demo.app.ui
+package com.jtouzy.demo.app.ui.generic
 
 import androidx.annotation.DrawableRes
 import androidx.compose.Composable
