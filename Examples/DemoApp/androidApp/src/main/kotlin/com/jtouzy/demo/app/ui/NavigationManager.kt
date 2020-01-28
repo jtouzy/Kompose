@@ -1,6 +1,7 @@
 package com.jtouzy.demo.app.ui
 
 import androidx.compose.Model
+import com.jtouzy.demo.ui.model.Character
 
 @Model
 object NavigationManager {
@@ -26,5 +27,5 @@ object NavigationManager {
 
 sealed class Screen {
     object Home : Screen()
-    object Quote : Screen()
+    data class Quote(val character: Character) : Screen()
 }
