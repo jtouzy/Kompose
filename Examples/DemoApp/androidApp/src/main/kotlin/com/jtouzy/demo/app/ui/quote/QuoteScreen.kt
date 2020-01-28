@@ -13,8 +13,8 @@ import androidx.ui.material.Divider
 import androidx.ui.material.TopAppBar
 import com.jtouzy.demo.app.R
 import com.jtouzy.demo.app.ui.NavigationManager
-import com.jtouzy.demo.app.ui.VectorImageButton
 import com.jtouzy.demo.app.ui.generic.LoadingScreen
+import com.jtouzy.demo.app.ui.generic.VectorImageButton
 import com.jtouzy.demo.ui.Store
 import com.jtouzy.demo.ui.model.Quote
 import com.jtouzy.demo.ui.quotes.QuotesPresenter
