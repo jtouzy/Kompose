@@ -20,7 +20,6 @@ import org.koin.dsl.module
 
 val appModule = module {
 
-
     single { BreakingBadApi() }
     single<DataStore> { InMemoryDataStore(get()) }
 

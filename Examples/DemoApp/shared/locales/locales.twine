@@ -1,3 +1,7 @@
+[[General]]
+	[app_name]
+		en = Kompose
+
 [[Quotes]]
 	[no_quotes]
 		en = No quotes :(

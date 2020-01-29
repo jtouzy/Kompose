@@ -1,20 +1,22 @@
 package com.jtouzy.demo.app.ui.quote
 
 import androidx.compose.Composable
+import androidx.compose.unaryPlus
 import androidx.ui.animation.Crossfade
 import androidx.ui.core.Text
 import androidx.ui.core.dp
 import androidx.ui.foundation.VerticalScroller
-import androidx.ui.graphics.Color
 import androidx.ui.layout.Center
 import androidx.ui.layout.Column
 import androidx.ui.layout.Padding
 import androidx.ui.material.Divider
+import androidx.ui.material.MaterialTheme
 import androidx.ui.material.TopAppBar
+import androidx.ui.res.stringResource
 import com.jtouzy.demo.app.R
 import com.jtouzy.demo.app.ui.NavigationManager
-import com.jtouzy.demo.app.ui.generic.LoadingScreen
-import com.jtouzy.demo.app.ui.generic.VectorImageButton
+import com.jtouzy.demo.app.ui.common.LoadingScreen
+import com.jtouzy.demo.app.ui.common.VectorImageButton
 import com.jtouzy.demo.ui.Store
 import com.jtouzy.demo.ui.model.Quote
 import com.jtouzy.demo.ui.quotes.QuotesPresenter
@@ -62,7 +64,7 @@ class QuoteScreen(
     @Composable
     private fun NoQuote() {
         Center {
-            Text(text = "No quote :(")
+            Text(text = +stringResource(R.string.no_quotes))
         }
     }
 
@@ -75,7 +77,7 @@ class QuoteScreen(
             Padding(16.dp) {
                 Text(text = quote.series)
             }
-            Divider(color = Color(0x14333333))
+            Divider(color = (+MaterialTheme.colors()).onBackground)
         }
     }
 }

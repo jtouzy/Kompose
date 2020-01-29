@@ -6,7 +6,7 @@ import androidx.compose.Composable
 import androidx.ui.core.setContent
 import androidx.ui.material.MaterialTheme
 import com.jtouzy.demo.app.ui.characters.CharactersScreen
-import com.jtouzy.demo.app.ui.generic.themeColors
+import com.jtouzy.demo.app.ui.common.themeColors
 import com.jtouzy.demo.app.ui.quote.QuoteScreen
 import org.koin.android.ext.android.get
 import org.koin.core.parameter.parametersOf

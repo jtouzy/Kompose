@@ -1,4 +1,4 @@
-package com.jtouzy.demo.app.ui.generic
+package com.jtouzy.demo.app.ui.common
 
 import androidx.ui.graphics.Color
 import androidx.ui.material.ColorPalette
@@ -10,7 +10,7 @@ val themeColors = ColorPalette(
     secondary = Color.White,
     onSecondary = Color.Black,
     background = Color.White,
-    onBackground = Color.Black,
+    onBackground = Color(0x14333333),
     surface = Color.White,
     onSurface = Color.Black,
     error = Color(0xFFD00036),
