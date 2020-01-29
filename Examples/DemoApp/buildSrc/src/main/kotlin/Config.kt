@@ -37,29 +37,14 @@ object Libs {
     private object Versions {
         const val timber = "4.7.1"
         const val koin = "2.0.1"
-        const val uniflow = "0.9.3"
         const val coil = "0.9.2"
         const val jsr310 = "1.2.1"
     }
 
     const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
     const val koinAndroid = "org.koin:koin-androidx-viewmodel:${Versions.koin}"
-    const val uniflow = "io.uniflow:uniflow-androidx:${Versions.uniflow}"
     const val coil = "io.coil-kt:coil:${Versions.coil}"
     const val jsr310 = "com.jakewharton.threetenabp:threetenabp:${Versions.jsr310}"
-}
-
-object Google {
-
-    private object Versions {
-        const val material = "1.1.0-beta02"
-        const val firebaseCore = "17.2.1"
-        const val firebaseMessaging = "20.0.1"
-    }
-
-    const val material = "com.google.android.material:material:${Versions.material}"
-    const val firebaseCore = "com.google.firebase:firebase-core:${Versions.firebaseCore}"
-    const val firebaseMessaging = "com.google.firebase:firebase-messaging:${Versions.firebaseMessaging}"
 }
 
 
