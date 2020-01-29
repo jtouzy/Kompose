@@ -16,4 +16,5 @@
 <resources>
 
     <string name="app_name">Kompose</string>
+    <string name="no_quotes">No quotes :(</string>
 </resources>

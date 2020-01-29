@@ -1,4 +1,4 @@
-package com.jtouzy.demo.app.ui.generic
+package com.jtouzy.demo.app.ui.common
 
 import android.graphics.Bitmap
 import android.os.Build

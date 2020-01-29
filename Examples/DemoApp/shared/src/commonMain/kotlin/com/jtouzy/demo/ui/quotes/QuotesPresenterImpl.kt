@@ -23,10 +23,7 @@ class QuotesPresenterImpl(
             store.currentState = if (quotes.isEmpty()) {
                 QuotesViewState.NoQuote(character.name)
             } else {
-                QuotesViewState.Content(
-                    character.name,
-                    quotes.map { Quote(it) }
-                )
+                QuotesViewState.Content(character.name, quotes.map { Quote(it) })
             }
         }
     }
