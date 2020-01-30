@@ -8,10 +8,12 @@ import androidx.ui.material.MaterialTheme
 import com.jtouzy.demo.app.ui.characters.CharactersScreen
 import com.jtouzy.demo.app.ui.common.themeColors
 import com.jtouzy.demo.app.ui.quote.QuoteScreen
-import org.koin.android.ext.android.get
-import org.koin.core.parameter.parametersOf
+import com.jtouzy.demo.cache.DataStore
+import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity() {
+
+    private val dataStore by inject<DataStore>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,8 +28,8 @@ class MainActivity : AppCompatActivity() {
     private fun KomposeApp() {
         MaterialTheme(colors = themeColors) {
             when (val screen = NavigationManager.currentScreen) {
-                Screen.Home -> get<CharactersScreen>().MainScreen()
-                is Screen.Quote -> get<QuoteScreen> { parametersOf(screen.character) }.MainScreen()
+                Screen.Home -> CharactersScreen.create(dataStore)
+                is Screen.Quote -> QuoteScreen.create(dataStore, screen.character)
             }
         }
     }

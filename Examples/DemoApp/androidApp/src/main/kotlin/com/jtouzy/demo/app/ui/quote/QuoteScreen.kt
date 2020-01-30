@@ -15,11 +15,15 @@ import androidx.ui.material.TopAppBar
 import androidx.ui.res.stringResource
 import com.jtouzy.demo.app.R
 import com.jtouzy.demo.app.ui.NavigationManager
+import com.jtouzy.demo.app.ui.ObservableStore
 import com.jtouzy.demo.app.ui.common.LoadingScreen
 import com.jtouzy.demo.app.ui.common.VectorImageButton
+import com.jtouzy.demo.cache.DataStore
 import com.jtouzy.demo.ui.Store
+import com.jtouzy.demo.ui.model.Character
 import com.jtouzy.demo.ui.model.Quote
 import com.jtouzy.demo.ui.quotes.QuotesPresenter
+import com.jtouzy.demo.ui.quotes.QuotesPresenterImpl
 import com.jtouzy.demo.ui.quotes.QuotesViewState
 
 class QuoteScreen(
@@ -78,6 +82,14 @@ class QuoteScreen(
                 Text(text = quote.series)
             }
             Divider(color = (+MaterialTheme.colors()).onBackground)
+        }
+    }
+
+    companion object {
+        fun create(dataStore: DataStore, character: Character) {
+            val store = ObservableStore<QuotesViewState>(QuotesViewState.Loading(character.name))
+            val presenter = QuotesPresenterImpl(store, dataStore, character)
+            QuoteScreen(store, presenter).MainScreen()
         }
     }
 }
