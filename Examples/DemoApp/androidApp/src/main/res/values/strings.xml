@@ -17,4 +17,5 @@
 
     <string name="app_name">Kompose</string>
     <string name="no_quotes">No quotes :(</string>
+    <string name="generic_message_error">An error occurred</string>
 </resources>

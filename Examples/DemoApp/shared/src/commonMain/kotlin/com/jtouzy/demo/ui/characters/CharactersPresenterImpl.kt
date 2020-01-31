@@ -16,9 +16,13 @@ class CharactersPresenterImpl(
 
     override fun loadCharacters() {
         GlobalScope.launch(mainDispatcher) {
-            store.currentState = CharactersViewState.Loading
-            val characters = withContext(ioDispatcher) { dataStore.getCharacters() }
-            store.currentState = CharactersViewState.Content(characters.map { Character(it) })
+            store.viewState = CharactersViewState.Loading
+            try {
+                val characters = withContext(ioDispatcher) { dataStore.getCharacters() }
+                store.viewState = CharactersViewState.Content(characters.map { Character(it) })
+            } catch (exception: Exception) {
+                store.viewState = CharactersViewState.Error
+            }
         }
     }
 }

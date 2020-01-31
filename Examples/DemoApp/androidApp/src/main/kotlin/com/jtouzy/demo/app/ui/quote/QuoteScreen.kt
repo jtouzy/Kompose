@@ -16,6 +16,7 @@ import androidx.ui.res.stringResource
 import com.jtouzy.demo.app.R
 import com.jtouzy.demo.app.ui.NavigationManager
 import com.jtouzy.demo.app.ui.ObservableStore
+import com.jtouzy.demo.app.ui.common.ErrorScreen
 import com.jtouzy.demo.app.ui.common.LoadingScreen
 import com.jtouzy.demo.app.ui.common.VectorImageButton
 import com.jtouzy.demo.cache.DataStore
@@ -27,6 +28,7 @@ import com.jtouzy.demo.ui.quotes.QuotesPresenterImpl
 import com.jtouzy.demo.ui.quotes.QuotesViewState
 
 class QuoteScreen(
+    private val navigationManager: NavigationManager,
     private val store: Store<QuotesViewState>,
     presenter: QuotesPresenter
 ) {
@@ -36,21 +38,22 @@ class QuoteScreen(
     }
 
     @Composable
-    fun MainScreen() {
+    private fun MainScreen() {
         Column {
             TopAppBar(
-                title = { Text(store.currentState.title) },
+                title = { Text(store.viewState.title) },
                 navigationIcon = {
                     VectorImageButton(R.drawable.ic_back) {
-                        NavigationManager.popBackStack()
+                        navigationManager.pop()
                     }
                 }
             )
-            Crossfade(store.currentState) { state ->
+            Crossfade(store.viewState) { state ->
                 when (state) {
                     is QuotesViewState.Loading -> LoadingScreen()
                     is QuotesViewState.Content -> QuoteList(state.quotes)
                     is QuotesViewState.NoQuote -> NoQuote()
+                    is QuotesViewState.Error -> ErrorScreen()
                 }
             }
         }
@@ -86,10 +89,10 @@ class QuoteScreen(
     }
 
     companion object {
-        fun create(dataStore: DataStore, character: Character) {
+        fun show(navigationManager: NavigationManager, dataStore: DataStore, character: Character) {
             val store = ObservableStore<QuotesViewState>(QuotesViewState.Loading(character.name))
             val presenter = QuotesPresenterImpl(store, dataStore, character)
-            QuoteScreen(store, presenter).MainScreen()
+            QuoteScreen(navigationManager, store, presenter).MainScreen()
         }
     }
 }

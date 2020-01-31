@@ -4,7 +4,7 @@ import androidx.compose.Model
 import com.jtouzy.demo.ui.model.Character
 
 @Model
-object NavigationManager {
+class NavigationManager {
 
     var currentScreen: Screen = Screen.Home
         private set
@@ -15,7 +15,7 @@ object NavigationManager {
         currentScreen = screen
     }
 
-    fun popBackStack(): Boolean =
+    fun pop(): Boolean =
         if (screenStack.size > 1) {
             screenStack.removeAt(screenStack.lastIndex)
             navigateTo(screenStack.last())
