@@ -46,14 +46,12 @@ kotlin {
     sourceSets {
         getByName("commonMain").dependencies {
             implementation(kotlin("stdlib-common", Build.Versions.kotlin))
-            implementation(Coroutines.core)
+            implementation(Coroutines.common)
             implementation(Serialization.common)
             implementation(Ktor.clientCore)
             implementation(Ktor.clientJson)
             implementation(Ktor.clientSerialization)
             implementation(Ktor.clientLogging)
-            implementation("com.soywiz.korlibs.krypto:krypto:1.9.1")
-            implementation("com.soywiz.korlibs.klock:klock:1.8.6")
         }
 
         getByName("androidMain").dependencies {
@@ -66,7 +64,6 @@ kotlin {
             implementation(Ktor.clientLoggingJvm)
             implementation(AndroidX.appCompat)
             implementation(AndroidX.coreKtx)
-            implementation(Libs.jsr310)
         }
 
         getByName("iosMain").dependencies {
@@ -76,6 +73,29 @@ kotlin {
             implementation(Ktor.clientJsonNative)
             implementation(Ktor.clientSerializationIos)
             implementation(Ktor.clientLoggingIos)
+        }
+
+        getByName("commonTest").dependencies {
+            implementation(kotlin("test-common", Build.Versions.kotlin))
+            implementation(kotlin("test-annotations-common", Build.Versions.kotlin))
+            implementation(Coroutines.common)
+            implementation(Tests.mockk)
+        }
+
+        getByName("androidTest").dependencies {
+            implementation(kotlin("test", Build.Versions.kotlin))
+            implementation(kotlin("test-junit", Build.Versions.kotlin))
+            implementation(kotlin("test-annotations-common", Build.Versions.kotlin))
+            implementation(Coroutines.android)
+            implementation(Tests.junit)
+            implementation(Tests.mockk)
+            implementation(Tests.androidxTestCore)
+            implementation(Tests.androidxTestJuint)
+            implementation(Tests.robolectric)
+        }
+
+        getByName("iosTest").dependencies {
+            implementation(Coroutines.native)
         }
     }
 }

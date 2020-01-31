@@ -84,7 +84,6 @@ android {
 dependencies {
     implementation(project(":shared"))
     implementation(kotlin("stdlib", Build.Versions.kotlin))
-    implementation(Coroutines.core)
     implementation(Coroutines.android)
     implementation(AndroidX.appCompat)
     implementation(AndroidX.coreKtx)
