@@ -11,7 +11,7 @@ import shared
 class ObservableStore<T: ViewState>: Store, ObservableObject {
     var currentState: ViewState {
         didSet {
-            guard let newState = currentState as? T else {
+            guard let newState = viewState as? T else {
                 fatalError("Cannot be casted")
             }
             state = newState
@@ -20,7 +20,7 @@ class ObservableStore<T: ViewState>: Store, ObservableObject {
     @Published var state: T
 
     init(baseState: T) {
-        currentState = baseState
+        viewState = baseState
         state = baseState
     }
 }

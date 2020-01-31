@@ -6,4 +6,5 @@ import com.jtouzy.demo.ui.model.Character
 sealed class CharactersViewState : ViewState {
     object Loading : CharactersViewState()
     data class Content(val characters: List<Character>) : CharactersViewState()
+    object Error : CharactersViewState()
 }

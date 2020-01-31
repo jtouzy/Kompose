@@ -37,7 +37,7 @@ class BreakingBadApi {
             encodedPath = "characters"
         }
     }.run {
-        Json.parse(CharacterDto.serializer().list, this)
+        Json.nonstrict.parse(CharacterDto.serializer().list, this)
     }
 
     suspend fun getCharacterQuotes(name: String): List<QuoteDto> = client.get<String> {
@@ -48,7 +48,7 @@ class BreakingBadApi {
             parameter("author", name)
         }
     }.run {
-        Json.parse(QuoteDto.serializer().list, this)
+        Json.nonstrict.parse(QuoteDto.serializer().list, this)
     }
 
     companion object {

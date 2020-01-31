@@ -19,16 +19,21 @@ import androidx.ui.material.ripple.Ripple
 import androidx.ui.res.stringResource
 import com.jtouzy.demo.app.R
 import com.jtouzy.demo.app.ui.NavigationManager
+import com.jtouzy.demo.app.ui.ObservableStore
 import com.jtouzy.demo.app.ui.Screen
+import com.jtouzy.demo.app.ui.common.ErrorScreen
 import com.jtouzy.demo.app.ui.common.LoadingScreen
 import com.jtouzy.demo.app.ui.common.VectorImage
 import com.jtouzy.demo.app.ui.common.image
+import com.jtouzy.demo.cache.DataStore
 import com.jtouzy.demo.ui.Store
 import com.jtouzy.demo.ui.characters.CharactersPresenter
+import com.jtouzy.demo.ui.characters.CharactersPresenterImpl
 import com.jtouzy.demo.ui.characters.CharactersViewState
 import com.jtouzy.demo.ui.model.Character
 
 class CharactersScreen(
+    private val navigationManager: NavigationManager,
     private val store: Store<CharactersViewState>,
     presenter: CharactersPresenter
 ) {
@@ -38,13 +43,14 @@ class CharactersScreen(
     }
 
     @Composable
-    fun MainScreen() {
+    private fun MainScreen() {
         Column {
             TopAppBar(title = { Text(text = +stringResource(R.string.app_name)) })
-            Crossfade(store.currentState) { state ->
+            Crossfade(store.viewState) { state ->
                 when (state) {
                     CharactersViewState.Loading -> LoadingScreen()
                     is CharactersViewState.Content -> CharacterList(state.characters)
+                    CharactersViewState.Error -> ErrorScreen()
                 }
             }
         }
@@ -63,7 +69,7 @@ class CharactersScreen(
     private fun CharacterItem(character: Character) {
         Ripple(bounded = true) {
             Clickable(onClick = {
-                NavigationManager.navigateTo(Screen.Quote(character))
+                navigationManager.navigateTo(Screen.Quote(character))
             }) {
                 Column {
                     Row {
@@ -84,6 +90,14 @@ class CharactersScreen(
                     Divider(color = (+MaterialTheme.colors()).onBackground)
                 }
             }
+        }
+    }
+
+    companion object {
+        fun show(navigationManager: NavigationManager, dataStore: DataStore) {
+            val store = ObservableStore<CharactersViewState>(CharactersViewState.Loading)
+            val presenter = CharactersPresenterImpl(store, dataStore)
+            CharactersScreen(navigationManager, store, presenter).MainScreen()
         }
     }
 }

@@ -1,6 +1,8 @@
 [[General]]
 	[app_name]
 		en = Kompose
+	[generic_message_error]
+		en = An error occurred
 
 [[Quotes]]
 	[no_quotes]

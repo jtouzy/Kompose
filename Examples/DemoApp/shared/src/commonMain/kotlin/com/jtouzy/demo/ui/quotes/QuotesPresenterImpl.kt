@@ -18,12 +18,16 @@ class QuotesPresenterImpl(
 
     override fun loadQuotes() {
         GlobalScope.launch(mainDispatcher) {
-            store.currentState = QuotesViewState.Loading(character.name)
-            val quotes = withContext(ioDispatcher) { dataStore.getCharacterQuotes(character.name) }
-            store.currentState = if (quotes.isEmpty()) {
-                QuotesViewState.NoQuote(character.name)
-            } else {
-                QuotesViewState.Content(character.name, quotes.map { Quote(it) })
+            store.viewState = QuotesViewState.Loading(character.name)
+            try {
+                val quotes = withContext(ioDispatcher) { dataStore.getCharacterQuotes(character.name) }
+                store.viewState = if (quotes.isEmpty()) {
+                    QuotesViewState.NoQuote(character.name)
+                } else {
+                    QuotesViewState.Content(character.name, quotes.map { Quote(it) })
+                }
+            } catch (exception: Exception) {
+                store.viewState = QuotesViewState.Error(character.name)
             }
         }
     }

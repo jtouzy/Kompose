@@ -14,6 +14,5 @@ data class CharacterDto(
     val nickname: String,
     val appearance: List<Int>,
     val portrayed: String,
-    val category: String,
-    val better_call_saul_appearance: List<String>
+    val category: String
 )
