@@ -5,10 +5,7 @@ import com.jtouzy.demo.common.runTest
 import com.jtouzy.demo.network.dto.CharacterDto
 import com.jtouzy.demo.ui.Store
 import com.jtouzy.demo.ui.model.Character
-import io.mockk.coEvery
-import io.mockk.coVerifyOrder
-import io.mockk.mockk
-import io.mockk.spyk
+import io.mockk.*
 import kotlin.test.Test
 
 open class CharactersPresenterTest {
@@ -33,9 +30,9 @@ open class CharactersPresenterTest {
     @Test
     fun `should return characters when call is successful`() {
         runTest {
-            presenter.loadCharacters()
+            presenter.asyncLoadCharacters()
 
-            coVerifyOrder {
+            verifyOrder {
                 store.viewState = CharactersViewState.Loading
                 store.viewState = CharactersViewState.Content(characters)
             }
@@ -46,7 +43,7 @@ open class CharactersPresenterTest {
     fun `should return an error when call is unsuccessful`() {
         runTest {
             coEvery { dataStore.getCharacters() } throws IllegalStateException("error")
-            presenter.loadCharacters()
+            presenter.asyncLoadCharacters()
 
             coVerifyOrder {
                 store.viewState = CharactersViewState.Loading

@@ -68,7 +68,7 @@ object AndroidX {
 
 object Coroutines {
 
-    private const val version = "1.3.3"
+    const val version = "1.3.3"
 
     const val common = "org.jetbrains.kotlinx:kotlinx-coroutines-core-common:$version"
     const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version"
@@ -107,9 +107,7 @@ object Ktor {
 
 object Tests {
 
-    const val junit = "junit:junit:4.13"
+    const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Coroutines.version}"
+    const val androidxTestJunit = "androidx.test.ext:junit:1.1.1"
     const val mockk = "io.mockk:mockk:1.9.3"
-    const val androidxTestCore = "androidx.test:core:1.2.0"
-    const val androidxTestJuint = "androidx.test.ext:junit:1.1.1"
-    const val robolectric = "org.robolectric:robolectric:4.0"
 }

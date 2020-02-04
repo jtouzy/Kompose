@@ -85,13 +85,9 @@ kotlin {
         getByName("androidTest").dependencies {
             implementation(kotlin("test", Build.Versions.kotlin))
             implementation(kotlin("test-junit", Build.Versions.kotlin))
-            implementation(kotlin("test-annotations-common", Build.Versions.kotlin))
             implementation(Coroutines.android)
-            implementation(Tests.junit)
-            implementation(Tests.mockk)
-            implementation(Tests.androidxTestCore)
-            implementation(Tests.androidxTestJuint)
-            implementation(Tests.robolectric)
+            implementation(Tests.coroutines)
+            implementation(Tests.androidxTestJunit)
         }
 
         getByName("iosTest").dependencies {
