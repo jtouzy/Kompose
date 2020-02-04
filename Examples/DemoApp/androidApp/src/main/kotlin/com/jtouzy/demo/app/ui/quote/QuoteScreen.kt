@@ -15,40 +15,31 @@ import androidx.ui.material.TopAppBar
 import androidx.ui.res.stringResource
 import com.jtouzy.demo.app.R
 import com.jtouzy.demo.app.ui.NavigationManager
-import com.jtouzy.demo.app.ui.ObservableStore
 import com.jtouzy.demo.app.ui.common.ErrorScreen
 import com.jtouzy.demo.app.ui.common.LoadingScreen
 import com.jtouzy.demo.app.ui.common.VectorImageButton
-import com.jtouzy.demo.cache.DataStore
-import com.jtouzy.demo.ui.Store
 import com.jtouzy.demo.ui.model.Character
 import com.jtouzy.demo.ui.model.Quote
-import com.jtouzy.demo.ui.quotes.QuotesPresenter
-import com.jtouzy.demo.ui.quotes.QuotesPresenterImpl
 import com.jtouzy.demo.ui.quotes.QuotesViewState
 
 class QuoteScreen(
     private val navigationManager: NavigationManager,
-    private val store: Store<QuotesViewState>,
-    presenter: QuotesPresenter
+    private val viewModel: QuoteViewModel
 ) {
 
-    init {
-        presenter.loadQuotes()
-    }
-
     @Composable
-    private fun MainScreen() {
+    fun MainScreen(character: Character) {
+        viewModel.loadQuote(character)
         Column {
             TopAppBar(
-                title = { Text(store.viewState.title) },
+                title = { Text(viewModel.viewState.title) },
                 navigationIcon = {
                     VectorImageButton(R.drawable.ic_back) {
                         navigationManager.pop()
                     }
                 }
             )
-            Crossfade(store.viewState) { state ->
+            Crossfade(viewModel.viewState) { state ->
                 when (state) {
                     is QuotesViewState.Loading -> LoadingScreen()
                     is QuotesViewState.Content -> QuoteList(state.quotes)
@@ -85,14 +76,6 @@ class QuoteScreen(
                 Text(text = quote.series)
             }
             Divider(color = (+MaterialTheme.colors()).onBackground)
-        }
-    }
-
-    companion object {
-        fun show(navigationManager: NavigationManager, dataStore: DataStore, character: Character) {
-            val store = ObservableStore<QuotesViewState>(QuotesViewState.Loading(character.name))
-            val presenter = QuotesPresenterImpl(store, dataStore, character)
-            QuoteScreen(navigationManager, store, presenter).MainScreen()
         }
     }
 }

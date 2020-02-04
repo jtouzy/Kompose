@@ -50,11 +50,13 @@ object AndroidX {
     private object Versions {
         const val appCompat = "1.1.0"
         const val coreKtx = "1.1.0"
+        const val viewModel = "2.1.0-beta01"
         const val compose = "0.1.0-dev03"
     }
 
     const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
     const val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
+    const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.viewModel}"
 
     const val composeFoundation = "androidx.ui:ui-foundation:${Versions.compose}"
     const val composeFramework = "androidx.ui:ui-framework:${Versions.compose}"

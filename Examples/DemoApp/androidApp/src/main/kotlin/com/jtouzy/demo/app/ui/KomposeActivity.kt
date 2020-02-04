@@ -6,15 +6,18 @@ import androidx.compose.Composable
 import androidx.ui.core.setContent
 import androidx.ui.material.MaterialTheme
 import com.jtouzy.demo.app.ui.characters.CharactersScreen
+import com.jtouzy.demo.app.ui.characters.CharactersViewModel
 import com.jtouzy.demo.app.ui.common.themeColors
 import com.jtouzy.demo.app.ui.quote.QuoteScreen
-import com.jtouzy.demo.cache.DataStore
+import com.jtouzy.demo.app.ui.quote.QuoteViewModel
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MainActivity : AppCompatActivity() {
+class KomposeActivity : AppCompatActivity() {
 
     private val navigationManager by inject<NavigationManager>()
-    private val dataStore by inject<DataStore>()
+    private val charactersViewModel by viewModel<CharactersViewModel>()
+    private val quoteViewModel by viewModel<QuoteViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,8 +32,8 @@ class MainActivity : AppCompatActivity() {
     private fun KomposeApp() {
         MaterialTheme(colors = themeColors) {
             when (val screen = navigationManager.currentScreen) {
-                Screen.Home -> CharactersScreen.show(navigationManager, dataStore)
-                is Screen.Quote -> QuoteScreen.show(navigationManager, dataStore, screen.character)
+                Screen.Home -> CharactersScreen(navigationManager, charactersViewModel).MainScreen()
+                is Screen.Quote -> QuoteScreen(navigationManager, quoteViewModel).MainScreen(screen.character)
             }
         }
     }

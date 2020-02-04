@@ -87,6 +87,7 @@ dependencies {
     implementation(Coroutines.android)
     implementation(AndroidX.appCompat)
     implementation(AndroidX.coreKtx)
+    implementation(AndroidX.viewModel)
     implementation(Libs.koinAndroid)
     implementation(Libs.timber)
     implementation(Libs.coil)

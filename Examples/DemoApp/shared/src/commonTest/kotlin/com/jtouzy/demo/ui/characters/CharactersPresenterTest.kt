@@ -1,6 +1,7 @@
 package com.jtouzy.demo.ui.characters
 
 import com.jtouzy.demo.cache.DataStore
+import com.jtouzy.demo.common.runTest
 import com.jtouzy.demo.network.dto.CharacterDto
 import com.jtouzy.demo.ui.Store
 import com.jtouzy.demo.ui.model.Character
@@ -10,7 +11,7 @@ import io.mockk.mockk
 import io.mockk.spyk
 import kotlin.test.Test
 
-abstract class CharactersPresenterTest {
+open class CharactersPresenterTest {
 
     private val dtoCharacters = listOf(
         CharacterDto("Toto", "url"),
@@ -27,26 +28,30 @@ abstract class CharactersPresenterTest {
     private val dataStore = mockk<DataStore> {
         coEvery { getCharacters() } returns dtoCharacters
     }
-    private val presenter = CharactersPresenterImpl(store, dataStore)
+    private val presenter = CharactersUseCase(store, dataStore)
 
     @Test
     fun `should return characters when call is successful`() {
-        presenter.loadCharacters()
+        runTest {
+            presenter.loadCharacters()
 
-        coVerifyOrder {
-            store.viewState = CharactersViewState.Loading
-            store.viewState = CharactersViewState.Content(characters)
+            coVerifyOrder {
+                store.viewState = CharactersViewState.Loading
+                store.viewState = CharactersViewState.Content(characters)
+            }
         }
     }
 
     @Test
     fun `should return an error when call is unsuccessful`() {
-        coEvery { dataStore.getCharacters() } throws IllegalStateException("error")
-        presenter.loadCharacters()
+        runTest {
+            coEvery { dataStore.getCharacters() } throws IllegalStateException("error")
+            presenter.loadCharacters()
 
-        coVerifyOrder {
-            store.viewState = CharactersViewState.Loading
-            store.viewState = CharactersViewState.Error
+            coVerifyOrder {
+                store.viewState = CharactersViewState.Loading
+                store.viewState = CharactersViewState.Error
+            }
         }
     }
 }

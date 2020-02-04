@@ -19,34 +19,25 @@ import androidx.ui.material.ripple.Ripple
 import androidx.ui.res.stringResource
 import com.jtouzy.demo.app.R
 import com.jtouzy.demo.app.ui.NavigationManager
-import com.jtouzy.demo.app.ui.ObservableStore
 import com.jtouzy.demo.app.ui.Screen
 import com.jtouzy.demo.app.ui.common.ErrorScreen
 import com.jtouzy.demo.app.ui.common.LoadingScreen
 import com.jtouzy.demo.app.ui.common.VectorImage
 import com.jtouzy.demo.app.ui.common.image
-import com.jtouzy.demo.cache.DataStore
-import com.jtouzy.demo.ui.Store
-import com.jtouzy.demo.ui.characters.CharactersPresenter
-import com.jtouzy.demo.ui.characters.CharactersPresenterImpl
 import com.jtouzy.demo.ui.characters.CharactersViewState
 import com.jtouzy.demo.ui.model.Character
 
 class CharactersScreen(
     private val navigationManager: NavigationManager,
-    private val store: Store<CharactersViewState>,
-    presenter: CharactersPresenter
+    private val viewModel: CharactersViewModel
 ) {
 
-    init {
-        presenter.loadCharacters()
-    }
-
     @Composable
-    private fun MainScreen() {
+    fun MainScreen() {
+        viewModel.loadCharacters()
         Column {
             TopAppBar(title = { Text(text = +stringResource(R.string.app_name)) })
-            Crossfade(store.viewState) { state ->
+            Crossfade(viewModel.viewState) { state ->
                 when (state) {
                     CharactersViewState.Loading -> LoadingScreen()
                     is CharactersViewState.Content -> CharacterList(state.characters)
@@ -90,14 +81,6 @@ class CharactersScreen(
                     Divider(color = (+MaterialTheme.colors()).onBackground)
                 }
             }
-        }
-    }
-
-    companion object {
-        fun show(navigationManager: NavigationManager, dataStore: DataStore) {
-            val store = ObservableStore<CharactersViewState>(CharactersViewState.Loading)
-            val presenter = CharactersPresenterImpl(store, dataStore)
-            CharactersScreen(navigationManager, store, presenter).MainScreen()
         }
     }
 }

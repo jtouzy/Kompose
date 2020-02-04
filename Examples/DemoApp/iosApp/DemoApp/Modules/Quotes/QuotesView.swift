@@ -13,8 +13,9 @@ import shared
 // MARK: View Layout
 //
 struct QuotesView: View {
-    let presenter: QuotesPresenter
+    let useCase: QuotesUseCase
     @ObservedObject var store: ObservableStore<QuotesViewState>
+    let character: Character
     var viewState: QuotesViewState { store.state }
 
     var body: some View {
@@ -57,6 +58,6 @@ struct QuotesView: View {
 //
 extension QuotesView {
     func onViewAppear() {
-        presenter.loadQuotes()
+        useCase.loadQuotes(character)
     }
 }
