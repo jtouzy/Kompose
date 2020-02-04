@@ -13,7 +13,7 @@ import shared
 // MARK: View Layout
 //
 struct CharactersView: View {
-    let presenter: CharactersPresenter
+    let useCase: CharactersUseCase
     @ObservedObject var store: ObservableStore<CharactersViewState>
     var viewState: CharactersViewState { store.state }
 
@@ -55,6 +55,6 @@ struct CharactersView: View {
 //
 extension CharactersView {
     func onViewAppear() {
-        presenter.loadCharacters()
+        useCase.loadCharacters()
     }
 }

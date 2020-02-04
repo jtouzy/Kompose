@@ -13,9 +13,9 @@ class QuotesAssembler {
         let store = ObservableStore<QuotesViewState>(
             baseState: QuotesViewState.Loading(title: character.name)
         )
-        let presenter = QuotesPresenterImpl(
-            store: store, dataStore: Factory.dataStore, character: character
+        let useCase = QuotesUseCase(
+            store: store, dataStore: Factory.dataStore
         )
-        return QuotesView(presenter: presenter, store: store)
+        return QuotesView(useCase: useCase, store: store, character: character)
     }
 }

@@ -37,42 +37,26 @@ object Libs {
     private object Versions {
         const val timber = "4.7.1"
         const val koin = "2.0.1"
-        const val uniflow = "0.9.3"
         const val coil = "0.9.2"
-        const val jsr310 = "1.2.1"
     }
 
     const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
     const val koinAndroid = "org.koin:koin-androidx-viewmodel:${Versions.koin}"
-    const val uniflow = "io.uniflow:uniflow-androidx:${Versions.uniflow}"
     const val coil = "io.coil-kt:coil:${Versions.coil}"
-    const val jsr310 = "com.jakewharton.threetenabp:threetenabp:${Versions.jsr310}"
 }
-
-object Google {
-
-    private object Versions {
-        const val material = "1.1.0-beta02"
-        const val firebaseCore = "17.2.1"
-        const val firebaseMessaging = "20.0.1"
-    }
-
-    const val material = "com.google.android.material:material:${Versions.material}"
-    const val firebaseCore = "com.google.firebase:firebase-core:${Versions.firebaseCore}"
-    const val firebaseMessaging = "com.google.firebase:firebase-messaging:${Versions.firebaseMessaging}"
-}
-
 
 object AndroidX {
 
     private object Versions {
         const val appCompat = "1.1.0"
         const val coreKtx = "1.1.0"
+        const val viewModel = "2.1.0-beta01"
         const val compose = "0.1.0-dev03"
     }
 
     const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
     const val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
+    const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.viewModel}"
 
     const val composeFoundation = "androidx.ui:ui-foundation:${Versions.compose}"
     const val composeFramework = "androidx.ui:ui-framework:${Versions.compose}"
@@ -84,9 +68,9 @@ object AndroidX {
 
 object Coroutines {
 
-    private const val version = "1.3.3"
+    const val version = "1.3.3"
 
-    const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
+    const val common = "org.jetbrains.kotlinx:kotlinx-coroutines-core-common:$version"
     const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version"
     const val native = "org.jetbrains.kotlinx:kotlinx-coroutines-core-native:$version"
 }
@@ -102,7 +86,7 @@ object Serialization {
 
 object Ktor {
 
-    private const val version = "1.2.6"
+    private const val version = "1.3.0"
 
     // Common
     const val clientCore = "io.ktor:ktor-client-core:$version"
@@ -119,4 +103,11 @@ object Ktor {
     const val clientJsonNative = "io.ktor:ktor-client-json-native:$version"
     const val clientSerializationIos = "io.ktor:ktor-client-serialization-iosx64:$version"
     const val clientLoggingIos = "io.ktor:ktor-client-logging-native:$version"
+}
+
+object Tests {
+
+    const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Coroutines.version}"
+    const val androidxTestJunit = "androidx.test.ext:junit:1.1.1"
+    const val mockk = "io.mockk:mockk:1.9.3"
 }

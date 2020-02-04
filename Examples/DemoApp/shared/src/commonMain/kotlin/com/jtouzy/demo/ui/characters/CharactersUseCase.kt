@@ -9,20 +9,24 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class CharactersPresenterImpl(
+class CharactersUseCase(
     private val store: Store<CharactersViewState>,
     private val dataStore: DataStore
-) : CharactersPresenter {
+) : CharactersInteractor {
+
+    override suspend fun asyncLoadCharacters() {
+        store.viewState = CharactersViewState.Loading
+        try {
+            val characters = withContext(ioDispatcher) { dataStore.getCharacters() }
+            store.viewState = CharactersViewState.Content(characters.map { Character(it) })
+        } catch (exception: Exception) {
+            store.viewState = CharactersViewState.Error
+        }
+    }
 
     override fun loadCharacters() {
         GlobalScope.launch(mainDispatcher) {
-            store.viewState = CharactersViewState.Loading
-            try {
-                val characters = withContext(ioDispatcher) { dataStore.getCharacters() }
-                store.viewState = CharactersViewState.Content(characters.map { Character(it) })
-            } catch (exception: Exception) {
-                store.viewState = CharactersViewState.Error
-            }
+            loadCharacters()
         }
     }
 }
