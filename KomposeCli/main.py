@@ -27,7 +27,7 @@ def exit_with_error(message):
 # Scripts utils
 # ####################
 
-zip_extract_path = '/Users/JTO/develop/github/Kompose/KomposeCli/Templates'
+zip_extract_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "Templates")
 
 
 class ProjectData:
