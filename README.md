@@ -6,6 +6,8 @@ Reusable architecture pattern for multiplatform mobile projects with Kotlin Mult
   <img src="./Resources/Logo.png" alt="overview" width="150"/>
 </p>
 
+**[Try now](#tryit) ⬇️**.
+
 ## Purpose
 
 This repository describes an architecture pattern & best practises for a mobile application project. Main advantages below :
@@ -66,8 +68,6 @@ But you can also implements another version of the Store, that will handle a Del
 * **Assembler (iOS)** : An assembler is here to merge it all together.
 The assembler will create the whole module, initializing the presenter, the view, and the store, then linking it together.
 
-*This layer is used because in Swift we don't have yet a proper DI like [Koin](https://github.com/InsertKoinIO/koin) for Android.*
-
 ### Speed up your multiplatform development
 
 #### 🚀 [iOS] Automatically generate a new framework with the last Kotlin classes in each build ?
@@ -91,3 +91,40 @@ You can use [Twine](https://github.com/scelis/twine) to have a single file refer
 Again, for iOS, with a simple `Run Script` in your `Build Phases`, you can generate your strings in each build.
 
 You can find an example in the demo app.
+
+### <a name="tryit"></a>Try it yourself
+
+You want to try it ? But doesn't want to loose time with configuration ?
+We just provide an utility tool for you to generate the structure of the project, so you can start clean.
+
+For now, it's a bit trivial, until we've published the tool on `brew`.
+Clone the repo, execute the `main.py` file, then give your informations, like below :
+
+```sh
+JTO @ tmp $ git clone https://github.com/jtouzy/Kompose
+
+Cloning into 'Kompose'...
+remote: Enumerating objects: 810, done.
+remote: Counting objects: 100% (810/810), done.
+remote: Compressing objects: 100% (355/355), done.
+remote: Total 1505 (delta 249), reused 759 (delta 211), pack-reused 695
+Receiving objects: 100% (1505/1505), 962.43 KiB | 2.47 MiB/s, done.
+Resolving deltas: 100% (448/448), done.
+
+JTO @ tmp $ ./Kompose/KomposeCli/main.py
+
+>> Creating a new multi-platform project with Kompose
+
+[1] Your project identifier (example: DemoApp): MyApp  
+[2] Your project package (example: com.jtouzy): com.myname
+[2] Your project absolute path ('Enter' for this location): 
+
+Creating project directory... /private/tmp/MyApp
+Generating files...
+
+>> Your project is ready. Cd here: /private/tmp/MyApp
+```
+
+### Issues, ideas
+
+If you have any recommandations, ideas, or issues, please feel free to open a new issue.
