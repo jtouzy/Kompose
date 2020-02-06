@@ -258,7 +258,6 @@ def copy_ios_app_files(project_maker):
             "contents.xcworkspacedata"
         )
     )
-
     os.mkdir(os.path.join(project_maker.project_data.path, "iosApp", "Frameworks"))
 
 
@@ -269,6 +268,12 @@ def move_ios_file(project_maker, file_name):
     )
 
 
+def print_end(project_data):
+    print("")
+    print(Colors.GREEN + Colors.BOLD + ">> Your project is ready. Cd here: " + Colors.END + project_data.path)
+    print("")
+
+
 # ####################
 # Main
 # ####################
@@ -277,3 +282,4 @@ print_title()
 project_options = ask_for_options()
 create_project_directory(project_options.path)
 copy_structure_files(project_options)
+print_end(project_options)
