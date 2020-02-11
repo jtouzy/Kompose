@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Stéphane Baiget
+ * Copyright $$YEAR$$ $$AUTHOR$$
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,9 +17,9 @@
 object Build {
 
     object Versions {
-        const val kotlin = "1.3.61"
-        const val androidGradle = "4.0.0-alpha09"
-        const val xcodeSync = "0.2"
+        const val kotlin = "$$VERSION_KOTLIN$$"
+        const val androidGradle = "$$VERSION_ANDROID_GRADLE$$"
+        const val xcodeSync = "$$VERSION_XCODE_SYNC$$"
     }
 
     const val androidGradle = "com.android.tools.build:gradle:${Versions.androidGradle}"
@@ -27,18 +27,18 @@ object Build {
 }
 
 object Android {
-    const val minSdkVersion = 21
-    const val targetSdkVersion = 29
-    const val compileSdkVersion = 29
+    const val minSdkVersion = $$VERSION_ANDROID_MIN_SDK$$
+    const val targetSdkVersion = $$VERSION_ANDROID_TARGET_SDK$$
+    const val compileSdkVersion = $$VERSION_ANDROID_COMPILE_SDK$$
 }
 
 object Libs {
 
     private object Versions {
-        const val timber = "4.7.1"
-        const val koin = "2.0.1"
-        const val coil = "0.9.2"
-        const val jsr310 = "1.2.1"
+        const val timber = "$$VERSION_LIBS_TIMBER$$"
+        const val koin = "$$VERSION_LIBS_KOIN$$"
+        const val coil = "$$VERSION_LIBS_COIL$$"
+        const val jsr310 = "$$VERSION_LIBS_JSR310$$"
     }
 
     const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
@@ -51,9 +51,9 @@ object Libs {
 object AndroidX {
 
     private object Versions {
-        const val appCompat = "1.1.0"
-        const val coreKtx = "1.1.0"
-        const val compose = "0.1.0-dev03"
+        const val appCompat = "$$VERSION_ANDROIDX_APPCOMPAT$$"
+        const val coreKtx = "$$VERSION_ANDROIDX_COREKTX$$"
+        const val compose = "$$VERSION_ANDROIDX_COMPOSE$$"
     }
 
     const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
@@ -69,7 +69,7 @@ object AndroidX {
 
 object Coroutines {
 
-    private const val version = "1.3.3"
+    private const val version = "$$VERSION_KOTLINX_COROUTINES$$"
 
     const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
     const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version"
@@ -78,7 +78,7 @@ object Coroutines {
 
 object Serialization {
 
-    private const val version = "0.14.0"
+    private const val version = "$$VERSION_KOTLINX_SERIALIZATION$$"
 
     const val common = "org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:$version"
     const val runtime = "org.jetbrains.kotlinx:kotlinx-serialization-runtime:$version"
@@ -87,7 +87,7 @@ object Serialization {
 
 object Ktor {
 
-    private const val version = "1.2.6"
+    private const val version = "$$VERSION_KTOR$$"
 
     // Common
     const val clientCore = "io.ktor:ktor-client-core:$version"
